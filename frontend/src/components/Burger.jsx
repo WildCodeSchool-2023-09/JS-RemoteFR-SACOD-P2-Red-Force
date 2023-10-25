@@ -1,9 +1,10 @@
 import "../scss/burger.scss";
+import burger from "../assets/icon_burger.svg";
 
 function Burger() {
   return (
     <div className="burger">
-      <img src="../assets/icon_burger.svg" alt="" />
+      <img src={burger} alt="" />
     </div>
   );
 }
