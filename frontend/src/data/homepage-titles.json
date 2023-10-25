@@ -1,17 +1,5 @@
 [
-  {
-    "t1": "Challenge",
-    "t2": "yourself"
-  },
-  {
-    "t1": "Choose",
-    "t2": "the",
-    "t3": "Difficulity"
-  },
-  {
-    "t1": "Improve",
-    "t2": "your",
-    "t3": "general",
-    "t4": "knowledge"
-  }
+  "Challenge yourself",
+  "Choose the Difficulity",
+  "Improve your general knowledge"
 ]

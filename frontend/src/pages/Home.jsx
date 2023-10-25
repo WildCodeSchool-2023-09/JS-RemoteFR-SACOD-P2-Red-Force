@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
-import hometitles from "../data/homepage-titles.json";
+import homePhrases from "../data/homepage-titles.json";
 import bgvideo from "../assets/mp4/home-background.mp4";
 import "../scss/home.scss";
 
 export default function Home() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentPhrase, setCurrentPhrase] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % hometitles.length);
+      setCurrentPhrase(
+        (prevhomePhrases) => (prevhomePhrases + 1) % homePhrases.length
+      );
     }, 8000);
 
     return () => clearInterval(interval);
@@ -29,12 +31,15 @@ export default function Home() {
         </video>
         <div className="container">
           <div className="titleContainer">
-            <p className="title a1">{hometitles[currentIndex].t1}</p>
-            <p className="title a2">{hometitles[currentIndex].t2}</p>
-            <p className="title a3">{hometitles[currentIndex].t3}</p>
-            <p className="title a4">{hometitles[currentIndex].t4}</p>
-            <p className="title a5">{hometitles[currentIndex].t5}</p>
-            <p className="title a6">{hometitles[currentIndex].t6}</p>
+            {homePhrases[currentPhrase].split(" ").map((word, index) => (
+              <p
+                className="title"
+                key={`${currentPhrase}-${word}`}
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                {word}
+              </p>
+            ))}
           </div>
         </div>
       </div>

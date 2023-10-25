@@ -39,6 +39,8 @@
       font-family: sans-serif;
       color: var(--color-white);
       width: fit-content;
+      transform: translateY(200px);
+      animation: SlideIn 8s ease-in-out infinite;
 
       @media (max-width: 680px) {
         font-size: 40px;
@@ -50,51 +52,24 @@
         font-size: 22px;
       }
     }
-
-    .a1,
-    .a2,
-    .a3,
-    .a4,
-    .a5,
-    .a6 {
-      transform: translateY(200px);
-      animation: SlideIn 8s ease-in-out infinite;
-    }
-
-    .a2 {
-      animation-delay: 0.1s;
-    }
-
-    .a3 {
-      animation-delay: 0.2s;
-    }
-
-    .a4 {
-      animation-delay: 0.3s;
-    }
-
-    .a5 {
-      animation-delay: 0.4s;
-    }
-
-    .a6 {
-      animation-delay: 0.5s;
-    }
-
     @keyframes SlideIn {
       0% {
         transform: translateY(200px);
+        opacity: 0;
       }
 
       20% {
         transform: translateY(0);
+        opacity: 100;
       }
 
       80% {
         transform: translateY(0);
+        opacity: 100;
       }
       100% {
         transform: translateY(-200px);
+        opacity: 0;
       }
     }
   }
