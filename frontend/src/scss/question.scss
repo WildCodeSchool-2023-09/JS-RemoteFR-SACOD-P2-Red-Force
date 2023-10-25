@@ -1,0 +1,86 @@
+.Question {
+  background-color: var(--color-light-grey);
+  margin-top: 8rem;
+  border: 3px solid var(--color-black);
+  border-radius: 15px;
+  width: 70%;
+  height: 20rem;
+}
+
+.Reponse {
+  margin-top: 9rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.A {
+  border: 5px solid var(--color-black);
+  border-radius: 15px;
+  display: flex;
+  justify-content: flex-start;
+  border-color: var(--color-orange);
+  background-color: white;
+  height: 3.5rem;
+  border-radius: 15px;
+  .colorA {
+    font-size: xx-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-orange);
+    width: 7rem;
+  }
+}
+.B {
+  border: 5px solid var(--color-black);
+  border-radius: 15px;
+  display: flex;
+  justify-content: flex-start;
+  border-color: var(--color-purple);
+  background-color: white;
+  height: 3.5rem;
+  .colorB {
+    font-size: xx-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-purple);
+    width: 7rem;
+  }
+}
+.C {
+  border: 5px solid var(--color-black);
+  border-radius: 15px;
+  display: flex;
+  justify-content: flex-start;
+  border-color: var(--color-blue);
+  background-color: white;
+  height: 3.5rem;
+  .colorC {
+    font-size: xx-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-blue);
+    width: 7rem;
+  }
+}
+.D {
+  border: 5px solid var(--color-black);
+  border-radius: 15px;
+  display: flex;
+  justify-content: flex-start;
+  border-color: var(--color-smoke-purple);
+  background-color: white;
+  height: 3.5rem;
+  .colorD {
+    font-size: xx-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-smoke-purple);
+    width: 7rem;
+  }
+}
