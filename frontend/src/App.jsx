@@ -1,9 +1,11 @@
 import "./App.css";
 
+import Home from "./pages/Home";
+
 function App() {
   return (
     <main className="App">
-      <p>Hello</p>
+      <Home />
     </main>
   );
 }
