@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import homePhrases from "../data/homepage-titles.json";
 import bgvideo from "../assets/mp4/home-background.mp4";
 import "../scss/home.scss";
@@ -11,14 +12,14 @@ export default function Home() {
       setCurrentPhrase(
         (prevhomePhrases) => (prevhomePhrases + 1) % homePhrases.length
       );
-    }, 8000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
     <main>
-      <div className="homemain">
+      <div className="home-main">
         <video
           className="background-video"
           autoPlay
@@ -29,17 +30,30 @@ export default function Home() {
         >
           <source src={bgvideo} type="video/mp4" />
         </video>
-        <div className="container">
-          <div className="titleContainer">
-            {homePhrases[currentPhrase].split(" ").map((word, index) => (
-              <p
-                className="title"
-                key={`${currentPhrase}-${word}`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+        <div className="allcontainer">
+          <div className="title-container">
+            <div className="content">
+              {homePhrases[currentPhrase].split(" ").map((word, index) => (
+                <p
+                  className="title"
+                  key={`${currentPhrase}-${word}`}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  {word}
+                </p>
+              ))}
+            </div>
+          </div>
+          <div className="play-container">
+            <Link to="/game">
+              <button
+                className="play-button"
+                title="Launch a random game"
+                type="button"
               >
-                {word}
-              </p>
-            ))}
+                Play a random game
+              </button>
+            </Link>
           </div>
         </div>
       </div>
