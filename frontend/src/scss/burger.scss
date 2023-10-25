@@ -1,3 +1,10 @@
 .burger {
   display: none;
+  @media screen and (max-width: 768px) {
+    display: block;
+    width: 2rem;
+  }
+}
+.burger:hover .nav {
+  display: block;
 }
