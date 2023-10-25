@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "linkname": "Homepage",
+    "linkurl": "#"
+  },
+  {
+    "id": 2,
+    "linkname": "Categories",
+    "linkurl": "/",
+    "dropdown": [
+      {
+        "id": 2.01,
+        "linkname": "Random game",
+        "linkurl": "#"
+      },
+      {
+        "id": 2.02,
+        "linkname": "Chose a category",
+        "linkurl": "#"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "linkname": "Scoreboard",
+    "linkurl": "#"
+  }
+]

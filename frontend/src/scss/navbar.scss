@@ -1,0 +1,27 @@
+nav {
+  background-color: var(--navbar-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+  padding: 0 20px 0 0;
+  font-size: 1.1rem;
+  li {
+    list-style: none;
+  }
+  .nav-link {
+    text-decoration: none;
+    color: var(--color-white);
+    &:hover {
+      opacity: 50%;
+    }
+  }
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+  }
+  .dropdown {
+    display: none;
+  }
+}
