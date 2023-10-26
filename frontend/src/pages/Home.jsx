@@ -22,11 +22,11 @@ export default function Home() {
       <div className="home-main">
         <video
           className="background-video"
-          autoPlay
-          loop
+          autoPlay="true"
+          loop="true"
           controls={false}
-          playsInline
-          muted
+          playsInline="true"
+          muted="true"
         >
           <source src={bgvideo} type="video/mp4" />
         </video>
