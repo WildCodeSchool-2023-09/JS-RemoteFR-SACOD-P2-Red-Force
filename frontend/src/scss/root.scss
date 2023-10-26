@@ -5,22 +5,26 @@
   --color-purple: #d8afff;
   --color-blue: #7ca9ff;
   --color-smoke-purple: #48424e;
-
+  --color-light-grey-calque: rgba(80, 80, 80, 0.5);
   --color-black: #151515;
   --color-grey: #202020;
   --color-light-grey: #505050;
   --color-white: #eaeaea;
 
-  --navbar-color: var(--color-smoke-purple);
+  --navbar-color: #48424eaa;
   --font: "Roboto", sans-serif;
 }
 
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
-
+a {
+  text-decoration: none;
+}
 main {
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
+  background-color: var(--color-black);
 }

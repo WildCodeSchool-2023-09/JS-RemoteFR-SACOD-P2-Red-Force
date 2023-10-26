@@ -1,0 +1,140 @@
+.home-main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+
+  transition: height 0.5s ease-in-out;
+  position: relative;
+
+  .background-video {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: fixed;
+    opacity: 15%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    background-position: center;
+  }
+
+  .allcontainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    bottom: 40vh;
+
+    z-index: 1;
+  }
+
+  .title-container {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    padding: 2rem;
+    justify-content: center;
+    margin: 0 auto;
+
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: fit-content;
+      height: fit-content;
+      overflow: hidden;
+      gap: 0.5rem;
+
+      .title {
+        font-size: 4rem;
+        font-family: sans-serif;
+        color: var(--color-white);
+        width: fit-content;
+
+        transform: translateY(200px);
+        animation: SlideIn 6s ease-in-out infinite;
+
+        @media (max-width: 1000px) {
+          font-size: 3.5rem;
+        }
+        @media (max-width: 580px) {
+          font-size: 2.5rem;
+        }
+        @media (max-width: 400px) {
+          font-size: 2;
+        }
+      }
+      @keyframes SlideIn {
+        0% {
+          transform: translateY(100px);
+          opacity: 0;
+        }
+
+        15% {
+          opacity: 0;
+        }
+        20% {
+          transform: translateY(0);
+          opacity: 100;
+        }
+
+        80% {
+          transform: translateY(0);
+          opacity: 100;
+        }
+        85% {
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(-100px);
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  .play-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin: 0 auto;
+    gap: 1rem;
+
+    font-family: var(--font);
+    color: var(--color-white);
+    font-size: 1rem;
+
+    opacity: 0;
+    animation: playOpacity 1s 1s ease-in forwards;
+
+    @keyframes playOpacity {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 100;
+      }
+    }
+
+    .play-button {
+      padding: 0.2rem 1rem;
+      font-family: var(--font);
+      color: var(--color-black);
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(0.95);
+      }
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+  }
+}
