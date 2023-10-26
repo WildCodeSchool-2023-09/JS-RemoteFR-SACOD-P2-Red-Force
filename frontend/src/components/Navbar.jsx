@@ -13,7 +13,6 @@ export default function Navbar() {
   };
   const [openCat, setOpenCat] = useState(false);
   const handleOpenCat = () => {
-    console.warn("openCat");
     setOpenCat(!openCat);
   };
 
