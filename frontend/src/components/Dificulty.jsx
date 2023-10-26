@@ -1,15 +1,30 @@
 import React from "react";
-import Start from "./Start";
+import "../scss/dificulty.scss";
+import PropTypes from "prop-types";
 
-function Dificulty() {
+function Dificulty({ name, styles }) {
+  Dificulty.propTypes = {
+    name: PropTypes.string.isRequired,
+    styles: PropTypes.string.isRequired,
+  };
+  let buttonClassName;
+  switch (styles) {
+    case "1":
+      buttonClassName = "ButtonsF";
+      break;
+    case "2":
+      buttonClassName = "ButtonsM";
+      break;
+    case "3":
+      buttonClassName = "ButtonsM";
+      break;
+    default:
+      buttonClassName = "Buttons";
+  }
   return (
-    <div className="Dificulty">
-      <h1> Choix de la difficulté </h1>
-      <button type="button"> Facile </button>
-      <button type="button"> Moyen </button>
-      <button type="button"> Difficile </button>
-      <Start />
-    </div>
+    <button type="button" className={buttonClassName}>
+      {name}
+    </button>
   );
 }
 

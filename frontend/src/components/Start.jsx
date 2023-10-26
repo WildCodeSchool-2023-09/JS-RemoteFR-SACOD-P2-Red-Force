@@ -1,10 +1,15 @@
 import React from "react";
+import "../scss/start.scss";
+import PropTypes from "prop-types";
 
-function Start() {
+function Start({ name }) {
+  Start.propTypes = {
+    name: PropTypes.string.isRequired,
+  };
   return (
-    <div className="Start">
-      <button type="button"> Commencer la partie </button>
-    </div>
+    <button type="button" className="Start">
+      {name}
+    </button>
   );
 }
 

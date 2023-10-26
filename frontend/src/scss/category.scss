@@ -1,16 +1,7 @@
 .Category {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  background-color: var(--color-light-grey);
-  margin-top: 8rem;
+  width: 7rem;
+  height: 2.5rem;
+  background-color: white;
   border: 3px solid var(--color-black);
   border-radius: 15px;
-  width: 25%;
-  height: 20rem;
-
-  button {
-    border-radius: 15px;
-    margin: 0.5rem;
-  }
 }

@@ -1,10 +1,15 @@
 import React from "react";
+import "../scss/category.scss";
+import PropTypes from "prop-types";
 
-function Category() {
+function Category({ name }) {
+  Category.propTypes = {
+    name: PropTypes.string.isRequired,
+  };
   return (
-    <div className="Category">
-      <button type="button"> sélection de catégorie </button>
-    </div>
+    <button type="button" className="Category">
+      {name}
+    </button>
   );
 }
 
