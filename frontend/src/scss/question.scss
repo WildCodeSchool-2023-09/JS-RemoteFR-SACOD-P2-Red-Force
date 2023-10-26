@@ -1,0 +1,18 @@
+.A {
+  border: 5px solid var(--color-black);
+  border-radius: 15px;
+  display: flex;
+  justify-content: flex-start;
+  border-color: var(--color-orange);
+  background-color: white;
+  height: 3rem;
+  width: 22rem;
+  .colorA {
+    font-size: xx-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-orange);
+    width: 3rem;
+  }
+}
