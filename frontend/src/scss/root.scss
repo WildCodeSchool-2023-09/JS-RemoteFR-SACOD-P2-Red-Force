@@ -5,14 +5,15 @@
   --color-purple: #d8afff;
   --color-blue: #7ca9ff;
   --color-smoke-purple: #48424e;
-  --color-light-grey-calque: rgba(80, 80, 80, 0.5);
+  --color-light-grey-calque: #48424eee;
   --color-black: #151515;
   --color-grey: #202020;
   --color-light-grey: #505050;
   --color-white: #eaeaea;
 
-  --navbar-color: #48424eaa;
+  --navbar-color: #48424eee;
   --font: "Roboto", sans-serif;
+  background-color: var(--color-black);
 }
 
 * {
@@ -23,8 +24,8 @@
 a {
   text-decoration: none;
 }
+
 main {
   width: 100%;
   min-height: 100vh;
-  background-color: var(--color-black);
 }

@@ -1,59 +1,68 @@
 .footer-section {
   display: flex;
+  position: absolute;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  background-color: var(--color-black);
+  width: 100%;
   padding-bottom: 10rem;
   gap: 3rem;
   padding: 3rem;
-}
+  overflow: hidden;
 
-img {
-  width: 150px;
-  height: 150px;
-}
-.footer-column {
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  min-width: 260px;
-  max-width: 320px;
-}
-
-ul {
-  list-style: none;
-}
-
-.footer-column-title {
-  display: flex;
-  font-weight: 600;
-  font-size: 1.2em;
-  padding-bottom: 20px;
+  font-family: var(--font);
+  color: var(--color-white);
   text-decoration: none;
   list-style: none;
-}
 
-.footer-about-text {
-  display: flex;
-  text-align: left;
-  font-weight: 300;
-  font-size: 1rem;
-  padding-bottom: 10px;
-  text-decoration: none;
-}
+  img {
+    width: 150px;
+    height: 150px;
+  }
 
-.footer-column-links {
-  display: flex;
-  flex-direction: column;
-}
+  .footer-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    min-width: 260px;
+    max-width: 320px;
+    gap: 0.5rem;
 
-.footerlinks {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  font-weight: 300;
-  font-size: 1rem;
-  padding: 0.8rem;
-  text-decoration: none;
-  list-style-type: none;
+    .footer-column-title {
+      display: flex;
+      font-weight: 600;
+      font-size: 1.2em;
+      padding-bottom: 1.2em;
+      text-decoration: none;
+    }
+
+    .footer-about-text {
+      display: flex;
+      text-align: left;
+      font-weight: 300;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+      text-decoration: none;
+
+      .footer-column-links {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .footerlinks {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        font-weight: 300;
+        font-size: 1rem;
+        padding: 0.8rem;
+        color: var(--color-white);
+      }
+    }
+  }
 }

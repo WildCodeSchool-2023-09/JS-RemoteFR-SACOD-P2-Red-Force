@@ -1,4 +1,3 @@
-import "./App.css";
 import Navbar from "./components/Navbar";
 import "./scss/root.scss";
 import Home from "./pages/Home";
@@ -8,13 +7,11 @@ import "./scss/Footer.scss";
 
 function App() {
   return (
-
-    <main className="App">
+    <main className="main-master">
       <Navbar />
       <Home />
       <Footer />
     </main>
-
   );
 }
 
