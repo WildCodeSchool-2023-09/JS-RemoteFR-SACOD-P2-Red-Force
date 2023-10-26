@@ -1,5 +1,5 @@
 import React from "react";
-import "../scss/category.scss";
+import "../../scss/components/category.scss";
 import PropTypes from "prop-types";
 
 function Category({ name }) {

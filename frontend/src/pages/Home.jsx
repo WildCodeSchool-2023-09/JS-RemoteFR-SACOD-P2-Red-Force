@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import homePhrases from "../data/homepage-titles.json";
 import bgvideo from "../assets/mp4/home-background.mp4";
 import "../scss/home.scss";
+import Button from "../components/buttons/Buttons";
 
 export default function Home() {
   const [currentPhrase, setCurrentPhrase] = useState(0);
@@ -44,16 +44,8 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className="play-container">
-            <Link to="/game">
-              <button
-                className="play-button"
-                title="Launch a random game"
-                type="button"
-              >
-                Play a random game
-              </button>
-            </Link>
+          <div>
+            <Button name="Play a Random Game" onClick="/#" styles="0" />
           </div>
         </div>
       </div>

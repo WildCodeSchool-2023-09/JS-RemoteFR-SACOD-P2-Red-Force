@@ -1,5 +1,5 @@
 import React from "react";
-import "../scss/start.scss";
+import "../../scss/components/start.scss";
 import PropTypes from "prop-types";
 
 function Start({ name }) {
