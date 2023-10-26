@@ -11,16 +11,20 @@
   --color-light-grey: #505050;
   --color-white: #eaeaea;
 
-  --navbar-color: var(--color-smoke-purple);
+  --navbar-color: #48424eaa;
   --font: "Roboto", sans-serif;
 }
 
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
-
+a {
+  text-decoration: none;
+}
 main {
   width: 100vw;
   min-height: 100vh;
+  background-color: var(--color-black);
 }

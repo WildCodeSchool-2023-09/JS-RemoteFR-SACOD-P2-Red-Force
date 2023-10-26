@@ -4,13 +4,12 @@ import Category from "./components/Category";
 import Question from "./components/Question";
 import Start from "./components/Start";
 
+import Home from "./pages/Home";
+
 function App() {
   return (
     <main className="App">
-      <Category />
-      <Dificulty styles="2" name="facile" />
-      <Question />
-      <Start name="commencer une partie" />
+      <Home />
     </main>
   );
 }
