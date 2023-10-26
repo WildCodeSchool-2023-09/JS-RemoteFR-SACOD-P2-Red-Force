@@ -1,16 +1,14 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
-
+import "./scss/root.scss";
 import Home from "./pages/Home";
 
 function App() {
   return (
-      <>
-        <Navbar />
-        <main className="App">
-          <Home />
-        </main>
-      </>
+    <main className="App">
+      <Navbar />
+      <Home />
+    </main>
   );
 }
 

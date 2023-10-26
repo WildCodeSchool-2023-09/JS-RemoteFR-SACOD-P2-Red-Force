@@ -44,8 +44,8 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div>
-            <Button name="Play a Random Game" onClick="/#" styles="0" />
+          <div className="play-container">
+            <Button name="Play a Random Game" linkUrl="/" styles="0" />
           </div>
         </div>
       </div>

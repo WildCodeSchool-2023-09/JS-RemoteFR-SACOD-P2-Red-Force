@@ -2,7 +2,7 @@
   {
     "id": 1,
     "linkname": "Homepage",
-    "linkurl": "#"
+    "linkurl": "/#"
   },
   {
     "id": 2,
@@ -12,18 +12,18 @@
       {
         "id": 2.01,
         "linkname": "Random game",
-        "linkurl": "#"
+        "linkurl": "/#"
       },
       {
         "id": 2.02,
         "linkname": "Category",
-        "linkurl": "#"
+        "linkurl": "/#"
       }
     ]
   },
   {
     "id": 3,
     "linkname": "Scoreboard",
-    "linkurl": "#"
+    "linkurl": "/#"
   }
 ]
