@@ -1,0 +1,31 @@
+:root {
+  --color-green: #91e5a6;
+  --color-red: #ffa3a3;
+  --color-orange: #fdb36f;
+  --color-purple: #d8afff;
+  --color-blue: #7ca9ff;
+  --color-smoke-purple: #48424e;
+  --color-light-grey-calque: #48424eee;
+  --color-black: #151515;
+  --color-grey: #202020;
+  --color-light-grey: #505050;
+  --color-white: #eaeaea;
+
+  --navbar-color: #48424eee;
+  --font: "Roboto", sans-serif;
+  background-color: var(--color-black);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+
+main {
+  width: 100%;
+  min-height: 100vh;
+}
