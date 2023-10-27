@@ -1,7 +1,7 @@
 import Navbar from "./components/Navbar";
 import "./scss/root.scss";
 import Home from "./pages/Home";
-
+import Quiz from "./pages/Quiz";
 import Footer from "./components/Footer";
 import "./scss/Footer.scss";
 
@@ -11,6 +11,7 @@ function App() {
       <Navbar />
       <Home />
       <Footer />
+      <Quiz />
     </main>
   );
 }

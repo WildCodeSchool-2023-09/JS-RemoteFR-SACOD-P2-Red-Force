@@ -1,9 +1,9 @@
-button {
+.burger-button {
   display: none;
 }
 @media screen and (max-width: 768px) {
   .burger,
-  button {
+  .burger-button {
     display: block;
     width: 2rem;
     height: 2rem;
