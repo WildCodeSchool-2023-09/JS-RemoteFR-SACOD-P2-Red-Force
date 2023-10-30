@@ -1,20 +1,34 @@
 import axios from "axios";
 import { useState } from "react";
 import "../scss/root.scss";
+import Question from "../components/buttons/Question";
 
+const initialQuestionData = {
+  question: "",
+  correct_answer: "",
+  incorrect_answers: [],
+};
 function Quiz() {
-  const [question, setQuestion] = useState("");
+  const [answersValue, setAnswersValue] = useState(initialQuestionData);
 
   const getQuestion = () => {
     axios.get("https://opentdb.com/api.php?amount=1").then((response) => {
-      console.warn(response.data.results[0].incorrect_answers);
-      console.warn(question);
-      setQuestion(response.data);
+      console.warn(response.data.results[0]);
+      setAnswersValue(response.data.results[0]);
     });
   };
+  const responses = answersValue.incorrect_answers.concat([
+    answersValue.correct_answer,
+  ]);
+  console.warn(answersValue.incorrect_answers);
+  console.warn(responses);
 
   return (
     <div>
+      <h2>{answersValue.question}</h2>
+      {responses.map((index, i) => {
+        return <Question key={index} responseValue={index} styles={i} />;
+      })}
       <button type="button" onClick={getQuestion}>
         get Question
       </button>
