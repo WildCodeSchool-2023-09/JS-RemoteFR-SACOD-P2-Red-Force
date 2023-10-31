@@ -6,39 +6,39 @@ export default function Life({ lifeValue }) {
     lifeValue: PropTypes.string.isRequired,
   };
   switch (lifeValue) {
-    case "1":
+    case 1:
       return (
         <p className="life activeLife">
           ?<span className="disableLife">?????</span>
         </p>
       );
 
-    case "2":
+    case 2:
       return (
         <p className="life activeLife">
           ??<span className="disableLife">????</span>
         </p>
       );
 
-    case "3":
+    case 3:
       return (
         <p className="life activeLife">
           ???<span className="disableLife">???</span>
         </p>
       );
-    case "4":
+    case 4:
       return (
         <p className="life activeLife">
           ????<span className="disableLife">??</span>
         </p>
       );
-    case "5":
+    case 5:
       return (
         <p className="life activeLife">
           ?????<span className="disableLife">?</span>
         </p>
       );
-    case "6":
+    case 6:
       return <p className="life activeLife">??????</p>;
 
     default:
