@@ -13,15 +13,13 @@ function Quiz() {
 
   const getQuestion = () => {
     axios.get("https://opentdb.com/api.php?amount=1").then((response) => {
-      console.warn(response.data.results[0]);
       setAnswersValue(response.data.results[0]);
     });
   };
   const responses = answersValue.incorrect_answers.concat([
     answersValue.correct_answer,
   ]);
-  console.warn(answersValue.incorrect_answers);
-  console.warn(responses);
+
 
   return (
     <div>
