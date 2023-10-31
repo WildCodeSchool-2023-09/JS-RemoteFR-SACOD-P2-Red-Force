@@ -20,7 +20,6 @@ function Quiz() {
     answersValue.correct_answer,
   ]);
 
-
   return (
     <div>
       <h2>{answersValue.question}</h2>
