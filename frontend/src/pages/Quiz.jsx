@@ -8,7 +8,8 @@ const initialQuestionData = {
   correct_answer: "",
   incorrect_answers: [],
 };
-function Quiz() {
+
+export default function Quiz() {
   const [answersValue, setAnswersValue] = useState(initialQuestionData);
 
   const getQuestion = () => {
@@ -20,17 +21,19 @@ function Quiz() {
     answersValue.correct_answer,
   ]);
 
+import QuizCard from "../components/QuizCard";
+import "../scss/root.scss";
+
   return (
     <div>
-      <h2>{answersValue.question}</h2>
-      {responses.map((index, i) => {
-        return <Question key={index} responseValue={index} styles={i} />;
-      })}
-      <button type="button" onClick={getQuestion}>
-        get Question
-      </button>
+      <QuizCard
+        questionValue="Comment ça va ?"
+        lifeValue="4"
+        scoreValue="25 874"
+        category="Vehicles"
+        level=""
+        timeValue="1:14"
+      />
     </div>
   );
 }
-
-export default Quiz;

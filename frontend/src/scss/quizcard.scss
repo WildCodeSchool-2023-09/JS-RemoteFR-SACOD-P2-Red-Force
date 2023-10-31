@@ -1,0 +1,132 @@
+.quizcard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: fit-content;
+
+  .card-icon {
+    display: flex;
+    position: relative;
+    top: 40px;
+    width: 80px;
+    height: 80px;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+    background-color: var(--color-white);
+    border: solid 2px var(--color-white);
+    border-radius: 100%;
+    box-shadow: 0 0 0.4rem var(--color-black);
+  }
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem;
+    gap: 1rem;
+    width: 100%;
+    max-width: 800px;
+    min-width: 260px;
+    min-height: 120px;
+    max-height: fit-content;
+
+    background-color: var(--color-light-grey);
+    border: solid 2px var(--color-white);
+    border-radius: 1rem;
+
+    .question {
+      font-family: var(--font);
+      font-size: 1.2rem;
+      color: var(--color-white);
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .levelInfos {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      justify-content: center;
+      gap: 0.6rem;
+
+      @media screen and (max-width: 330px) {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .life {
+        display: flex;
+        width: 40%;
+        justify-content: end;
+        letter-spacing: 0.4rem;
+        font-family: var(--font);
+        font-size: 1rem;
+        font-weight: 600;
+
+        @media screen and (max-width: 330px) {
+          justify-content: center;
+          width: fit-content;
+        }
+      }
+
+      .activeLife {
+        font-family: var(--font);
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--color-white);
+      }
+
+      .disableLife {
+        font-family: var(--font);
+        font-size: 1rem;
+        color: var(--color-white);
+        font-weight: 600;
+        opacity: 0.2;
+      }
+      .separator {
+        font-family: var(--font);
+        font-size: 1rem;
+        color: var(--color-white);
+        font-weight: 600;
+        border: solid 1px var(--color-white);
+        @media screen and (max-width: 330px) {
+          justify-content: center;
+          width: 10%;
+        }
+      }
+      .score {
+        display: flex;
+        width: 40%;
+        font-family: var(--font);
+        font-size: 1rem;
+        color: var(--color-white);
+        font-weight: 600;
+        @media screen and (max-width: 330px) {
+          justify-content: center;
+          width: fit-content;
+        }
+      }
+    }
+  }
+  .timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.6rem 2rem;
+    max-height: fit-content;
+    position: relative;
+    top: -25px;
+
+    background-color: var(--color-white);
+    border: solid 2px var(--color-white);
+    border-radius: 0.8rem;
+    box-shadow: 0 0 0.4rem var(--color-black);
+
+    font-family: var(--font);
+    font-size: 1.2rem;
+    color: var(--color-black);
+    font-weight: 600;
+    text-align: center;
+  }
+}
