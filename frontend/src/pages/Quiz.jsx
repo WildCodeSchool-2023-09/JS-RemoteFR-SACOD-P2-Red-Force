@@ -1,14 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
+import QuizCard from "../components/QuizCard";
 import "../scss/root.scss";
-import Question from "../components/buttons/Question";
 
 const initialQuestionData = {
   question: "",
   correct_answer: "",
   incorrect_answers: [],
 };
-
 export default function Quiz() {
   const [answersValue, setAnswersValue] = useState(initialQuestionData);
 
@@ -19,11 +18,8 @@ export default function Quiz() {
   };
   const responses = answersValue.incorrect_answers.concat([
     answersValue.correct_answer,
-  ]);
-
-import QuizCard from "../components/QuizCard";
-import "../scss/root.scss";
-
+  ]); 
+  
   return (
     <div>
       <QuizCard
