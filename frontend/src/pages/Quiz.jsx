@@ -6,11 +6,11 @@ export default function Quiz() {
     <div>
       <QuizCard
         questionValue="Comment ça va ?"
-        lifeValue="3"
-        scoreValue="1234"
-        category=""
+        lifeValue="4"
+        scoreValue="25 874"
+        category="Vehicles"
         level=""
-        timeValue="1:54"
+        timeValue="1:14"
       />
     </div>
   );
