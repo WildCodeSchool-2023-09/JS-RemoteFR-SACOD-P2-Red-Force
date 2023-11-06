@@ -4,6 +4,8 @@ import he from "he";
 
 import QuizCard from "../components/QuizCard";
 import "../scss/root.scss";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 
 const initialQuestionData = {
   question: "",
@@ -106,23 +108,31 @@ export default function Quiz() {
     }
   }
   return (
-    <div>
-      <QuizCard
-        questionValue={newQuestion.question}
-        lifeValue={life}
-        scoreValue={points}
-        category={newQuestion.category}
-        level=""
-        timeValue="1:14"
-      />
-      <button type="button" onClick={getQuestion}>
-        Get Question
-      </button>
-      {responses.map((response) => (
-        <button type="button" onClick={() => sendUserResponse(response)}>
-          {response}
+    <>
+      <Navbar />
+      <main className="main-master">
+        <QuizCard
+          questionValue={newQuestion.question}
+          lifeValue={life}
+          scoreValue={points}
+          category={newQuestion.category}
+          level=""
+          timeValue="1:14"
+        />
+        <button type="button" onClick={getQuestion}>
+          Get Question
         </button>
-      ))}
-    </div>
+        {responses.map((response) => (
+          <button
+            key={response}
+            type="button"
+            onClick={() => sendUserResponse(response)}
+          >
+            {response}
+          </button>
+        ))}
+      </main>
+      <Footer />
+    </>
   );
 }

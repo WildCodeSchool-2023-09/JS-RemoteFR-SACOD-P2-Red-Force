@@ -45,7 +45,7 @@ export default function Home() {
             </div>
           </div>
           <div className="play-container">
-            <Button name="Play a Random Game" linkUrl="/" styles="0" />
+            <Button name="Play a Random Game" linkUrl="/Quiz" styles="0" />
           </div>
         </div>
       </div>
