@@ -87,26 +87,26 @@ export default function Quiz() {
     return responsesRandom.sort(() => Math.random() - 0.5);
   }
   responses = shuffleArray(responses);
-
   function sendUserResponse(response) {
     if (response === newQuestion.correct_answer) {
       console.warn("Correct answer!");
-      setPoints(points + 1);
+      setPoints(points + 100);
       getQuestion();
     } else {
       console.warn("Wrong answer!");
+
       setLife(life - 1);
       if (life === 0) {
         console.warn("Game over!");
         getQuestion();
-        setPoints(0);
-        setLife(3);
+        setPoints({ points });
       } else {
         console.warn("Try again!");
         getQuestion();
       }
     }
   }
+
   return (
     <>
       <Navbar />
