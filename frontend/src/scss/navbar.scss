@@ -1,5 +1,7 @@
 nav {
   background-color: var(--navbar-color);
+  position: fixed;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -7,6 +9,7 @@ nav {
   padding: 0 20px;
   font-size: 1.1rem;
   font-family: var(--font);
+  z-index: 99;
 
   .trivality {
     height: 80%;
