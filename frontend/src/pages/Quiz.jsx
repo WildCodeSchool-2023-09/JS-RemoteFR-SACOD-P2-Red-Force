@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
 import he from "he";
-
 import QuizCard from "../components/QuizCard";
 import "../scss/root.scss";
 import Footer from "../components/Footer";
@@ -17,6 +16,7 @@ export default function Quiz() {
   const [newQuestion, setNewQuestion] = useState(initialQuestionData);
   const [points, setPoints] = useState(0);
   const [life, setLife] = useState(3);
+  const [multiply, setMultiply] = useState(1);
 
   const decodeString = (str) => {
     return he.decode(str);
@@ -87,14 +87,39 @@ export default function Quiz() {
     return responsesRandom.sort(() => Math.random() - 0.5);
   }
   responses = shuffleArray(responses);
+
   function sendUserResponse(response) {
+    const difficulty = "hard";
     if (response === newQuestion.correct_answer) {
-      console.warn("Correct answer!");
-      setPoints(points + 100);
+      /* SCORE LOGIC QUESTIONS A 4 REPONSES */
+      if (responses.length === 4) {
+        console.warn("Correct answer!");
+        setPoints(points + 100);
+        setMultiply(multiply + 1);
+        if (multiply >= 4 && difficulty === "hard") {
+          setPoints(300 + points);
+        }
+        if (multiply >= 4 && difficulty === "medium") {
+          setPoints(200 + points);
+        }
+      }
+      /* SCORE LOGIC QUESTIONS A 2 REPONSES */
+      if (responses.length === 2 /* || rajouter timer */) {
+        console.warn("Correct answer!");
+        setPoints(points + 50);
+        setMultiply(multiply + 1);
+        if (multiply >= 4 && difficulty === "hard") {
+          setPoints(points * 3 + 50);
+        }
+        if (multiply >= 4 && difficulty === "medium") {
+          setPoints(points * 2 + 50);
+        }
+      }
+      console.warn(multiply);
       getQuestion();
     } else {
       console.warn("Wrong answer!");
-
+      setMultiply(0);
       setLife(life - 1);
       if (life === 0) {
         console.warn("Game over!");
