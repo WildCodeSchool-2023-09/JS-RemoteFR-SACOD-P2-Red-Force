@@ -18,7 +18,7 @@ export default function Quiz() {
   const [points, setPoints] = useState(0);
   const [life, setLife] = useState(3);
   const [multiply, setMultiply] = useState(1);
-
+  let currentLife = life;
   const decodeString = (str) => {
     return he.decode(str);
   };
@@ -132,13 +132,14 @@ export default function Quiz() {
         }
       }
       console.warn(multiply);
-      console.warn(`vie: ${life}`);
+      console.warn(`vie: ${currentLife}`);
       getStarted();
     } else {
       setLife(life - 1);
+      currentLife = life - 1;
       setMultiply(0);
-      console.warn(`vie: ${life}`);
-      if (life === 0) {
+      console.warn(`vie: ${currentLife}`);
+      if (currentLife === 0) {
         console.warn("Game over!");
         setPoints({ points });
       } else {
@@ -171,7 +172,7 @@ export default function Quiz() {
       <main className="main-master">
         <QuizCard
           questionValue={newQuestion.question}
-          lifeValue={life}
+          lifeValue={currentLife}
           scoreValue={points}
           category={newQuestion.category}
           level=""
