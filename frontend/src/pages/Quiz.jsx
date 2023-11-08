@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import * as React from "react";
 import he from "he";
 import QuizCard from "../components/QuizCard";
 import "../scss/root.scss";
@@ -79,19 +80,34 @@ export default function Quiz() {
     }
   };
 
+  /* REPONSES CORRECT ET INCORRECT */
   let responses = newQuestion.incorrect_answers.concat(
     newQuestion.correct_answer
   );
 
-  function shuffleArray(responsesRandom) {
-    return responsesRandom.sort(() => Math.random() - 0.5);
-  }
-  responses = shuffleArray(responses);
+  /* TIMER LOGIC */
 
+  const [seconds, setSeconds] = useState(5);
+  const [paused, setPaused] = useState(true);
+
+  const currentCount = `00: ${seconds}`;
+
+  function getStarted() {
+    setSeconds(5);
+    getQuestion();
+    setPaused(false);
+
+    /* ANSWERS SHUFFLE */
+    function shuffleArray(responsesRandom) {
+      return responsesRandom.sort(() => Math.random() - 0.5);
+    }
+    responses = shuffleArray(responses);
+  }
+  /* ANSWERS SYSTEM */
   function sendUserResponse(response) {
     const difficulty = "hard";
-    if (response === newQuestion.correct_answer) {
-      /* SCORE LOGIC QUESTIONS A 4 REPONSES */
+    if (response === newQuestion.correct_answer && seconds > 0 && life > 0) {
+      /* SCORE LOGIC 4 ANSWERS */
       if (responses.length === 4) {
         console.warn("Correct answer!");
         setPoints(points + 100);
@@ -103,8 +119,8 @@ export default function Quiz() {
           setPoints(200 + points);
         }
       }
-      /* SCORE LOGIC QUESTIONS A 2 REPONSES */
-      if (responses.length === 2 /* || rajouter timer */) {
+      /* SCORE LOGIC 2 ANWERS */
+      if (responses.length === 2) {
         console.warn("Correct answer!");
         setPoints(points + 50);
         setMultiply(multiply + 1);
@@ -116,21 +132,38 @@ export default function Quiz() {
         }
       }
       console.warn(multiply);
-      getQuestion();
+      console.warn(`vie: ${life}`);
+      getStarted();
     } else {
-      console.warn("Wrong answer!");
-      setMultiply(0);
       setLife(life - 1);
+      setMultiply(0);
+      console.warn(`vie: ${life}`);
       if (life === 0) {
         console.warn("Game over!");
-        getQuestion();
         setPoints({ points });
       } else {
         console.warn("Try again!");
-        getQuestion();
+        console.warn("Wrong answer!");
+        getStarted();
       }
     }
   }
+  /* TIMER EFFECT */
+  useEffect(() => {
+    let interval;
+
+    if (!paused && seconds > 0 && life > 0) {
+      interval = setInterval(() => {
+        setSeconds(seconds - 1);
+      }, 1000);
+    } else if (seconds === 0) {
+      sendUserResponse();
+      setSeconds(5);
+    }
+    return () => {
+      clearInterval(interval);
+    };
+  }, [paused, seconds]);
 
   return (
     <>
@@ -142,9 +175,9 @@ export default function Quiz() {
           scoreValue={points}
           category={newQuestion.category}
           level=""
-          timeValue="1:14"
+          timeValue={currentCount}
         />
-        <button type="button" onClick={getQuestion}>
+        <button type="button" onClick={getStarted}>
           Get Question
         </button>
         {responses.map((response) => (

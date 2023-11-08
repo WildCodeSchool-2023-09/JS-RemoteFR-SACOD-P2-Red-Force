@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import * as React from "react";
 import "../scss/quizcard.scss";
 import Life from "./Life";
 
@@ -13,7 +14,7 @@ export default function QuizCard({
     questionValue: PropTypes.string.isRequired,
     scoreValue: PropTypes.number.isRequired,
     lifeValue: PropTypes.number.isRequired,
-    category: PropTypes.number.isRequired,
+    category: PropTypes.string.isRequired,
     timeValue: PropTypes.string.isRequired,
   };
 
