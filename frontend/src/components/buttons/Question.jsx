@@ -43,4 +43,4 @@ function Question({ responseValue, styles, onClick }) {
 
 export default Question;
 
-/* <Difficulty responseValue="" onClick="/#" styles="A" /> */
+/* <Difficulty responseValue="" onClick="/#" styles="" /> */
