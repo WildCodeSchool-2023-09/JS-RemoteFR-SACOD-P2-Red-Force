@@ -13,15 +13,12 @@ function Question({ responseValue, styles, onClick }) {
   switch (styles) {
     case 0:
       Value = "A";
-
       break;
     case 1:
       Value = "B";
-
       break;
     case 2:
       Value = "C";
-
       break;
     case 3:
       Value = "D";
