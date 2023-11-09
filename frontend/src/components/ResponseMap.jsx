@@ -14,17 +14,13 @@ function ResponseMap(userResponses, correctAnswers) {
       <p>
         score: {score}/{correctAnswers.length}
       </p>
-      <ul>
         {userResponses.map((response, index) => (
-          //<li key={index}>
             Question {index + 1} :
             <br />
             Réponse de l'utilisateur : {response}
             <br />
             Réponse correcte : {correctAnswers[index]}
-          </li>
         ))}
-      </ul>
     </div>
   );
 }
