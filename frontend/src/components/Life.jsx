@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 export default function Life({ lifeValue }) {
   Life.propTypes = {
-    lifeValue: PropTypes.string.isRequired,
+    lifeValue: PropTypes.number.isRequired,
   };
   switch (lifeValue) {
     case 1:

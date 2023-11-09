@@ -8,6 +8,7 @@ function Question({ responseValue, styles, onClick }) {
     styles: PropTypes.number.isRequired,
     onClick: PropTypes.func.isRequired,
   };
+
   let Value;
   switch (styles) {
     case 0:
@@ -42,5 +43,3 @@ function Question({ responseValue, styles, onClick }) {
 }
 
 export default Question;
-
-/* <Difficulty responseValue="" onClick="/#" styles="" /> */
