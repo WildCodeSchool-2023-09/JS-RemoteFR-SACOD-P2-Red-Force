@@ -8,6 +8,7 @@ function Question({ responseValue, styles, onClick }) {
     styles: PropTypes.number.isRequired,
     onClick: PropTypes.func.isRequired,
   };
+  
   let Value;
   switch (styles) {
     case 0:
@@ -28,6 +29,7 @@ function Question({ responseValue, styles, onClick }) {
     default:
       Value = "X";
   }
+  
   return (
     <button type="button" onClick={onClick}>
       <span className={`quest ${Value}`} type="button">
