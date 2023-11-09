@@ -13,15 +13,12 @@ function Question({ responseValue, styles, onClick }) {
   switch (styles) {
     case 0:
       Value = "A";
-
       break;
     case 1:
       Value = "B";
-
       break;
     case 2:
       Value = "C";
-
       break;
     case 3:
       Value = "D";
@@ -32,6 +29,7 @@ function Question({ responseValue, styles, onClick }) {
     default:
       Value = "X";
   }
+
   return (
     <button type="button" onClick={onClick}>
       <span className={`quest ${Value}`} type="button">
@@ -41,5 +39,4 @@ function Question({ responseValue, styles, onClick }) {
     </button>
   );
 }
-
 export default Question;

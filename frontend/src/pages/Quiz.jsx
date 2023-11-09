@@ -6,7 +6,7 @@ import QuizCard from "../components/QuizCard";
 import "../scss/root.scss";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import Difficulty from "../components/buttons/Question";
+import Question from "../components/buttons/Question";
 
 const initialQuestionData = {
   question: "",
@@ -201,7 +201,7 @@ export default function Quiz() {
           Get Question
         </button>
         {responses.map((response, index) => (
-          <Difficulty
+          <Question
             key={index.id}
             responseValue={response}
             styles={index}
