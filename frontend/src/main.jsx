@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import Quiz from "./pages/Quiz";
 import CategoryPage from "./pages/CategoryPage";
+import ScoreBoard from "./pages/ScoreBoard";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/categoryPage",
     element: <CategoryPage />,
+  },
+  {
+    path: "/scoreboard",
+    element: <ScoreBoard />,
   },
 ]);
 
