@@ -87,13 +87,14 @@ export default function Quiz() {
 
   /* TIMER LOGIC */
 
-  const [seconds, setSeconds] = useState(5);
+  const [seconds, setSeconds] = useState(30);
   const [paused, setPaused] = useState(true);
 
-  const currentCount = `00: ${seconds}`;
+  const currentCount = seconds < 10 ? `00:0${seconds}` : `00: ${seconds}`;
 
+  /* QUESTION LAUNCH */
   function getStarted() {
-    setSeconds(5);
+    setSeconds(30);
     getQuestion();
     setPaused(false);
 
@@ -149,6 +150,7 @@ export default function Quiz() {
       }
     }
   }
+
   /* TIMER EFFECT */
   useEffect(() => {
     let interval;
@@ -159,7 +161,7 @@ export default function Quiz() {
       }, 1000);
     } else if (seconds === 0) {
       sendUserResponse();
-      setSeconds(5);
+      setSeconds(30);
     }
     return () => {
       clearInterval(interval);
