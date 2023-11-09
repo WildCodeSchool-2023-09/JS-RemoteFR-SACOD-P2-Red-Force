@@ -12,18 +12,18 @@
       {
         "id": 2.01,
         "linkname": "Random game",
-        "linkurl": "/#"
+        "linkurl": "/quiz"
       },
       {
         "id": 2.02,
         "linkname": "Category",
-        "linkurl": "/#"
+        "linkurl": "/category"
       }
     ]
   },
   {
     "id": 3,
     "linkname": "Scoreboard",
-    "linkurl": "/#"
+    "linkurl": "/scoreboard"
   }
 ]

@@ -7,17 +7,24 @@ import "../scss/root.scss";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Question from "../components/buttons/Question";
+import Difficulty from "../components/buttons/Question";
 
 const initialQuestionData = {
   question: "",
   correct_answer: "",
   incorrect_answers: [],
 };
-
+let userScore;
 export default function Quiz() {
   const [newQuestion, setNewQuestion] = useState(initialQuestionData);
   const [points, setPoints] = useState(0);
   const [life, setLife] = useState(3);
+
+  if (localStorage.getItem("userScore") === !undefined) {
+    userScore = localStorage.getItem("userScore");
+  } else {
+    userScore = [];
+  }
 
   const decodeString = (str) => {
     return he.decode(str);
@@ -99,7 +106,13 @@ export default function Quiz() {
       setLife(life - 1);
       if (life === 0) {
         console.warn("Game over!");
-        getQuestion();
+        userScore.push({
+          points: { points },
+          difficulty: "data.difficulty",
+          category: "data.category",
+          date: Date.now(),
+        });
+        localStorage.setItem("userScore", JSON.stringify(userScore));
         setPoints(0);
         setLife(3);
       } else {
@@ -108,6 +121,7 @@ export default function Quiz() {
       }
     }
   }
+
   return (
     <>
       <Navbar />
