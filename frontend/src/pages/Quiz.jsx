@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
 import he from "he";
-
 import QuizCard from "../components/QuizCard";
 import "../scss/root.scss";
 import Footer from "../components/Footer";
