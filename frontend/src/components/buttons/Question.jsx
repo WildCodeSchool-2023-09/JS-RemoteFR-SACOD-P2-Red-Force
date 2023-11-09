@@ -42,4 +42,4 @@ function Question({ responseValue, styles, onClick }) {
   );
 }
 
-export default Question;
+export default Question
