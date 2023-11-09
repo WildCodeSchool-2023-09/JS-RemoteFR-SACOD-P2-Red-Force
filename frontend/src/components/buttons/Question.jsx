@@ -29,7 +29,7 @@ function Question({ responseValue, styles, onClick }) {
     default:
       Value = "X";
   }
-  
+
   return (
     <button type="button" onClick={onClick}>
       <span className={`quest ${Value}`} type="button">
@@ -39,5 +39,4 @@ function Question({ responseValue, styles, onClick }) {
     </button>
   );
 }
-
 export default Question;
