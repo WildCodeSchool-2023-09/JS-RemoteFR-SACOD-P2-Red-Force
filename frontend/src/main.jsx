@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     element: <Quiz />,
   },
   {
-    path: "/categoryPage",
+    path: "/category",
     element: <CategoryPage />,
   },
   {

@@ -9,6 +9,19 @@ export default function ScoreCard({ score, difficulty, category, date }) {
     date: PropTypes.string.isRequired,
   };
 
+  const timestamp = parseInt(date, 10);
+  const newdate = new Date(timestamp);
+
+  function formatHour(hourdate) {
+    const hours = hourdate.getHours().toString().padStart(2, "0");
+    const minutes = hourdate.getMinutes().toString().padStart(2, "0");
+    return `${hours}:${minutes}`;
+  }
+
+  const formattedDate = `${newdate.getDate()}/${
+    newdate.getMonth() + 1
+  }/${newdate.getFullYear()} | ${formatHour(newdate)}`;
+
   return (
     <div>
       <div className="scoreCard">
@@ -16,7 +29,7 @@ export default function ScoreCard({ score, difficulty, category, date }) {
         <div className="section">
           <div className="diffanddate">
             <p className="difficulty">{difficulty}</p>
-            <p className="date">{date}</p>
+            <p className="date">{formattedDate}</p>
           </div>
           <p className="score">{score} points</p>
         </div>

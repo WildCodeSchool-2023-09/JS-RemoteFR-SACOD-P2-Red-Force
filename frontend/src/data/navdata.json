@@ -1,22 +1,22 @@
 [
   {
     "id": 1,
-    "linkname": "Homepage",
+    "linkname": "Accueil",
     "linkurl": "/#"
   },
   {
     "id": 2,
-    "linkname": "Categories",
+    "linkname": "Mode de jeu",
     "linkurl": "/",
     "dropdown": [
       {
         "id": 2.01,
-        "linkname": "Random game",
+        "linkname": "Partie aléatoire",
         "linkurl": "/quiz"
       },
       {
         "id": 2.02,
-        "linkname": "Category",
+        "linkname": "Choisir une catégorie",
         "linkurl": "/category"
       }
     ]

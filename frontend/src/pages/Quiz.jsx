@@ -6,26 +6,23 @@ import QuizCard from "../components/QuizCard";
 import "../scss/root.scss";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import Question from "../components/buttons/Question";
+import ResponseBtn from "../components/buttons/ResponseBtn";
+import bgvideo from "../assets/mp4/home-background.mp4";
 
 const initialQuestionData = {
   question: "",
   correct_answer: "",
   incorrect_answers: [],
 };
-let userScore;
+
+const userScore = JSON.parse(localStorage.getItem("userScore")) || [];
+
 export default function Quiz() {
   const [newQuestion, setNewQuestion] = useState(initialQuestionData);
   const [points, setPoints] = useState(0);
   const [life, setLife] = useState(3);
   const [multiply, setMultiply] = useState(1);
   let currentLife = life;
-
-  if (localStorage.getItem("userScore") === !undefined) {
-    userScore = localStorage.getItem("userScore");
-  } else {
-    userScore = [];
-  }
 
   const decodeString = (str) => {
     return he.decode(str);
@@ -134,10 +131,10 @@ export default function Quiz() {
         setPoints(points + 50);
         setMultiply(multiply + 1);
         if (multiply >= 4 && difficulty === "hard") {
-          setPoints(points * 3 + 50);
+          setPoints(150 + points);
         }
         if (multiply >= 4 && difficulty === "medium") {
-          setPoints(points * 2 + 50);
+          setPoints(100 + points);
         }
       }
       console.warn(multiply);
@@ -151,15 +148,14 @@ export default function Quiz() {
       if (currentLife === 0) {
         console.warn("Game over!");
         setPoints({ points });
+
         userScore.push({
-          points: { points },
-          difficulty: "data.difficulty",
-          category: "data.category",
+          score: points,
+          difficulty: newQuestion.difficulty,
+          category: newQuestion.category,
           date: Date.now(),
         });
         localStorage.setItem("userScore", JSON.stringify(userScore));
-        setPoints(0);
-        setLife(3);
       } else {
         console.warn("Try again!");
         console.warn("Wrong answer!");
@@ -188,27 +184,43 @@ export default function Quiz() {
   return (
     <>
       <Navbar />
-      <main className="main-master">
-        <QuizCard
-          questionValue={newQuestion.question}
-          lifeValue={currentLife}
-          scoreValue={points}
-          category={newQuestion.category}
-          level=""
-          timeValue={currentCount}
-        />
-        <button type="button" onClick={getStarted}>
-          Get Question
-        </button>
-        {responses.map((response, index) => (
-          <Question
-            key={index.id}
-            responseValue={response}
-            styles={index}
-            type="button"
-            onClick={() => sendUserResponse(response)}
+      <main>
+        <div className="home-main">
+          <video
+            className="background-video"
+            autoPlay="true"
+            loop="true"
+            controls={false}
+            playsInline="true"
+            muted="true"
+          >
+            <source src={bgvideo} type="video/mp4" />
+          </video>
+          <QuizCard
+            questionValue={newQuestion.question}
+            lifeValue={currentLife}
+            scoreValue={points}
+            category={newQuestion.category}
+            level=""
+            timeValue={currentCount}
           />
-        ))}
+          <button type="button" onClick={getStarted}>
+            Get Question
+          </button>
+          <div className="buttons-container">
+            {responses[0] !== ""
+              ? responses.map((response, index) => (
+                  <ResponseBtn
+                    key={response}
+                    responseValue={response}
+                    styles={index}
+                    type="button"
+                    onClick={() => sendUserResponse(response)}
+                  />
+                ))
+              : null}
+          </div>
+        </div>
       </main>
       <Footer />
     </>
