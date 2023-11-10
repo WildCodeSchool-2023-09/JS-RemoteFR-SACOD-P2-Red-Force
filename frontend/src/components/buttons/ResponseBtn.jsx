@@ -31,7 +31,7 @@ function Question({ responseValue, styles, onClick }) {
   }
 
   return (
-    <button type="button" onClick={onClick}>
+    <button className="buttonResponses" type="button" onClick={onClick}>
       <span className={`quest ${Value}`} type="button">
         <p className={`letterbox ${Value}`}>{Value}</p>
         <p className="response"> {responseValue}</p>

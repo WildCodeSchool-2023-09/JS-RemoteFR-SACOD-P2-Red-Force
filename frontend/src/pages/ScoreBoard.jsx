@@ -8,32 +8,7 @@ export default function ScoreBoard() {
   let userScore;
 
   if (localStorage.getItem("userScore") === null) {
-    userScore = [
-      {
-        score: 11200,
-        difficulty: "easy",
-        category: "Entertainment: Musicals & Theatres",
-        date: "02-10-2023 | 04:45",
-      },
-      {
-        score: 11200,
-        difficulty: "hard",
-        category: "Random Game",
-        date: "02-10-2023 | 05:00",
-      },
-      {
-        score: 11200,
-        difficulty: "easy",
-        category: "Entertainment: Musicals & Theatres",
-        date: "02-10-2023 | 05:10",
-      },
-      {
-        score: 11200,
-        difficulty: "medium",
-        category: "Entertainment: Sports",
-        date: "04-10-2023 | 17:34",
-      },
-    ];
+    userScore = [];
     localStorage.setItem("userScore", JSON.stringify(userScore));
   } else {
     userScore = JSON.parse(localStorage.getItem("userScore"));
@@ -66,15 +41,17 @@ export default function ScoreBoard() {
               <hr className="separator" />
             </div>
             {userScore[0] !== undefined ? (
-              userScore.map((score) => (
-                <ScoreCard
-                  key={score.date}
-                  score={score.score}
-                  difficulty={score.difficulty}
-                  category={score.category}
-                  date={score.date}
-                />
-              ))
+              userScore
+                .reverse()
+                .map((score) => (
+                  <ScoreCard
+                    key={score.date}
+                    score={score.score}
+                    difficulty={score.difficulty}
+                    category={score.category}
+                    date={score.date}
+                  />
+                ))
             ) : (
               <p className="noResults">Il n'y pas de score enregistrés</p>
             )}

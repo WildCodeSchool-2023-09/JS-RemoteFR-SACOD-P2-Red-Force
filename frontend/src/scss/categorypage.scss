@@ -20,13 +20,14 @@ h1 {
 }
 
 .Main {
-  display: grid;
-  grid-template-columns: auto;
-  justify-content: center;
+  display: flex;
+  padding-top: 70px;
 }
 
 .CategoryCard {
+  padding-bottom: 70px;
   justify-content: center;
+  margin: 0 auto;
   max-width: 1200px;
   gap: 15px;
   display: flex;

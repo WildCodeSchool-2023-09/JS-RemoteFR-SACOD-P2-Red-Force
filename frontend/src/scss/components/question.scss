@@ -1,7 +1,13 @@
-button {
+.buttonResponses {
   background: none;
   border: none;
   cursor: pointer;
+  width: 45%;
+  min-width: 260px;
+
+  @media screen and (max-width: 540px) {
+    width: 100%;
+  }
 }
 .quest {
   display: flex;
@@ -12,7 +18,7 @@ button {
   border-radius: 0.8rem;
   min-height: 3.5rem;
   min-width: 260px;
-  max-width: 320px;
+  max-width: 100%;
   max-height: border-box;
   overflow: hidden;
 
