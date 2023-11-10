@@ -21,11 +21,11 @@ export default function ScoreBoard() {
         <div className="home-main">
           <video
             className="background-video"
-            autoPlay="true"
-            loop="true"
+            autoPlay
+            loop
             controls={false}
-            playsInline="true"
-            muted="true"
+            playsInline
+            muted
           >
             <source src={bgvideo} type="video/mp4" />
           </video>
@@ -34,8 +34,8 @@ export default function ScoreBoard() {
             <div className="head">
               <h1 className="title">Scoreboard</h1>
               <p className="description">
-                Retrouvez ici le resultat de toutes vos parties jouées. Ses
-                valeurs sont unique à votre session sur ce navigateur et sont
+                Retrouvez ici le resultat de toutes vos parties jouées. Ces
+                valeurs sont uniques à votre session sur ce navigateur et sont
                 enregistrées uniquement chez vous.
               </p>
               <hr className="separator" />
@@ -53,7 +53,9 @@ export default function ScoreBoard() {
                   />
                 ))
             ) : (
-              <p className="noResults">Il n'y pas de score enregistrés</p>
+              <p className="noResults">
+                Il n'y a encore aucun score enregistré
+              </p>
             )}
           </div>
         </div>

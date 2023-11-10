@@ -9,9 +9,9 @@ function App() {
   const [url, setUrl] = useState("https://opentdb.com/api.php?amount=1");
   return (
     <>
-      <Navbar />
+      <Navbar setUrl={setUrl} />
       <main>
-        <Outlet setUrl={setUrl} url={url} />
+        <Outlet context={[url, setUrl]} />
       </main>
       <Footer />
     </>

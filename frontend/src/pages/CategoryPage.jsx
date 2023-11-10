@@ -1,4 +1,5 @@
-import PropTypes from "prop-types";
+import { useOutletContext, useNavigate } from "react-router-dom";
+import React from "react";
 import Category from "../components/buttons/Category";
 import category from "../data/category.json";
 import bgvideo from "../assets/mp4/home-background.mp4";
@@ -6,16 +7,16 @@ import "../scss/categorypage.scss";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
-function CategoryPage({ setUrl, url }) {
-  CategoryPage.propTypes = {
-    setUrl: PropTypes.func.isRequired,
-    url: PropTypes.string.isRequired,
-  };
+function CategoryPage() {
+  const navigate = useNavigate();
+  const [url, setUrl] = useOutletContext();
 
   function handleClick(id) {
     setUrl(`https://opentdb.com/api.php?amount=1&category=${id}`);
+    navigate("/quiz");
+    console.warn(url);
   }
-  console.warn(url);
+
   return (
     <>
       <Navbar />

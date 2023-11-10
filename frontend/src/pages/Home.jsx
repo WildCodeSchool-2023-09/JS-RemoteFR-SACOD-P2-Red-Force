@@ -1,3 +1,4 @@
+import { useOutletContext, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import homePhrases from "../data/homepage-titles.json";
 import bgvideo from "../assets/mp4/home-background.mp4";
@@ -6,6 +7,8 @@ import Button from "../components/buttons/Buttons";
 
 export default function Home() {
   const [currentPhrase, setCurrentPhrase] = useState(0);
+  const [url, setUrl] = useOutletContext();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -17,16 +20,21 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
+  function handleClick() {
+    setUrl(`https://opentdb.com/api.php?amount=1&category=0`);
+    navigate("/quiz");
+  }
+  console.warn(url);
   return (
     <main>
       <div className="home-main">
         <video
           className="background-video"
-          autoPlay="true"
-          loop="true"
+          autoPlay
+          loop
           controls={false}
-          playsInline="true"
-          muted="true"
+          playsInline
+          muted
         >
           <source src={bgvideo} type="video/mp4" />
         </video>
@@ -47,7 +55,7 @@ export default function Home() {
           <div className="play-container">
             <Button
               name="Lancer une partie rapide"
-              linkUrl="/Quiz"
+              linkUrl={() => handleClick()}
               styles="0"
             />
           </div>

@@ -1,12 +1,16 @@
 import { NavLink as Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import { useState } from "react";
 import navdata from "../data/navdata.json";
 import Burger from "./Burger";
 import "../scss/navbar.scss";
 import trivalitylogo from "../assets/Trivality_Logo_Officiel.svg";
 
-export default function Navbar() {
-  /* State to open burger menu */
+export default function Navbar({ setUrl }) {
+  Navbar.propTypes = {
+    setUrl: PropTypes.func.isRequired,
+  };
+
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(!open);
@@ -15,6 +19,10 @@ export default function Navbar() {
   const handleOpenCat = () => {
     setOpenCat(!openCat);
   };
+
+  function handleBtnClick() {
+    setUrl(`https://opentdb.com/api.php?amount=1&category=0`);
+  }
 
   return (
     <nav>
@@ -41,6 +49,7 @@ export default function Navbar() {
                       <Link
                         className="nav-link nav-ddlink"
                         to={dropdownindex.linkurl}
+                        onClick={() => handleBtnClick()}
                       >
                         {dropdownindex.linkname}
                       </Link>

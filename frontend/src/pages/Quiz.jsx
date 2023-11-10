@@ -1,3 +1,4 @@
+import { useOutletContext } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import * as React from "react";
@@ -18,6 +19,7 @@ const initialQuestionData = {
 const userScore = JSON.parse(localStorage.getItem("userScore")) || [];
 
 export default function Quiz() {
+  const [url] = useOutletContext();
   const [newQuestion, setNewQuestion] = useState(initialQuestionData);
   const [points, setPoints] = useState(0);
   const [life, setLife] = useState(3);
@@ -30,12 +32,12 @@ export default function Quiz() {
 
   const translateFR = async (value) => {
     const API_KEY = import.meta.env.VITE_TRANSLATION_KEY_GOOGLEAPI;
-    let url = `https://translation.googleapis.com/language/translate/v2?key=${API_KEY}`;
-    url += `&q=${encodeURI(value)}`;
-    url += `&source=en`;
-    url += `&target=fr`;
+    let urlTranslate = `https://translation.googleapis.com/language/translate/v2?key=${API_KEY}`;
+    urlTranslate += `&q=${encodeURI(value)}`;
+    urlTranslate += `&source=en`;
+    urlTranslate += `&target=fr`;
     try {
-      const response = await fetch(url, {
+      const response = await fetch(urlTranslate, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -55,10 +57,10 @@ export default function Quiz() {
       return value;
     }
   };
-
+  console.warn(url);
   const getQuestion = async () => {
     try {
-      const response = await axios.get("https://opentdb.com/api.php?amount=1");
+      const response = await axios.get(url);
       const data = response.data.results[0];
 
       data.question = decodeString(data.question);
@@ -188,11 +190,11 @@ export default function Quiz() {
         <div className="home-main">
           <video
             className="background-video"
-            autoPlay="true"
-            loop="true"
+            autoPlay
+            loop
             controls={false}
-            playsInline="true"
-            muted="true"
+            playsInline
+            muted
           >
             <source src={bgvideo} type="video/mp4" />
           </video>

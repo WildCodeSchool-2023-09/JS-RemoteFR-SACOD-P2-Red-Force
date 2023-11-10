@@ -1,13 +1,12 @@
 import React from "react";
 import "../../scss/components/buttons.scss";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 
 function Difficulty({ name, styles, linkUrl }) {
   Difficulty.propTypes = {
     name: PropTypes.string.isRequired,
     styles: PropTypes.string.isRequired,
-    linkUrl: PropTypes.string.isRequired,
+    linkUrl: PropTypes.func.isRequired,
   };
   let buttonClassName;
   switch (styles) {
@@ -24,9 +23,9 @@ function Difficulty({ name, styles, linkUrl }) {
       buttonClassName = "button default";
   }
   return (
-    <Link to={linkUrl} className={buttonClassName}>
+    <button type="button" onClick={linkUrl} className={buttonClassName}>
       {name}
-    </Link>
+    </button>
   );
 }
 
