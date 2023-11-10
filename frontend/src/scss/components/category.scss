@@ -1,7 +1,14 @@
 .Category {
   width: 7rem;
   height: 2.5rem;
-  background-color: white;
-  border: 3px solid var(--color-black);
+  background-color: var(--color-white);
+  border: none;
   border-radius: 15px;
+
+  &:hover {
+    transform: scale(0.95);
+  }
+  &:active {
+    transform: scale(0.9);
+  }
 }
