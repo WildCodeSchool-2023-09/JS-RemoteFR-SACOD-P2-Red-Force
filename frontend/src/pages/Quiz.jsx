@@ -1,4 +1,4 @@
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import * as React from "react";
@@ -8,6 +8,7 @@ import "../scss/root.scss";
 import DifficultyCard from "../components/DifficultyCard";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import Button from "../components/buttons/Buttons";
 import ResponseBtn from "../components/buttons/ResponseBtn";
 import bgvideo from "../assets/mp4/home-background.mp4";
 
@@ -27,6 +28,14 @@ export default function Quiz() {
   const [life, setLife] = useState(3);
   const [multiply, setMultiply] = useState(1);
   const [stateCard, setStateCard] = useState("difficulty");
+  const [responses, setResponses] = useState([]);
+  const navigate = useNavigate();
+
+  /* TIMER LOGIC */
+
+  const [seconds, setSeconds] = useState(30);
+  const [paused, setPaused] = useState(true);
+  const currentCount = seconds < 10 ? `00:0${seconds}` : `00: ${seconds}`;
   let currentLife = life;
 
   const decodeString = (str) => {
@@ -91,30 +100,26 @@ export default function Quiz() {
     }
   };
 
-  /* REPONSES CORRECT ET INCORRECT */
-  let responses = newQuestion.incorrect_answers.concat(
-    newQuestion.correct_answer
-  );
+  function shuffleArray(responsesRandom) {
+    return responsesRandom.sort(() => Math.random() - 0.5);
+  }
 
-  /* TIMER LOGIC */
-
-  const [seconds, setSeconds] = useState(30);
-  const [paused, setPaused] = useState(true);
-
-  const currentCount = seconds < 10 ? `00:0${seconds}` : `00: ${seconds}`;
-
-  /* QUESTION LAUNCH */
   function getStarted() {
     setSeconds(30);
     getQuestion();
     setPaused(false);
-
-    /* ANSWERS SHUFFLE */
-    function shuffleArray(responsesRandom) {
-      return responsesRandom.sort(() => Math.random() - 0.5);
-    }
-    responses = shuffleArray(responses);
   }
+
+  useEffect(() => {
+    if (newQuestion.incorrect_answers && newQuestion.correct_answer) {
+      const shuffledResponses = shuffleArray([
+        ...newQuestion.incorrect_answers,
+        newQuestion.correct_answer,
+      ]);
+      setResponses(shuffledResponses);
+    }
+  }, [newQuestion]);
+
   /* ANSWERS SYSTEM */
   function sendUserResponse(response) {
     if (response === newQuestion.correct_answer && seconds > 0 && life > 0) {
@@ -231,7 +236,16 @@ export default function Quiz() {
               </div>
             </div>
           )}
-          {stateCard === "error" && <p>Error</p>}
+          {stateCard === "error" && (
+            <div className="gameover">
+              <h1>Partie Terminée</h1>
+              <Button
+                styles="0"
+                linkUrl={() => navigate("/scoreboard")}
+                name="Voir le Scoreboard"
+              />
+            </div>
+          )}
         </div>
       </main>
       <Footer />
