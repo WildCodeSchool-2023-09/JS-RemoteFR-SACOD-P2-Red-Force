@@ -7,15 +7,22 @@ export default function DifficultyCard({
   setSelectedDifficulty,
   selectedDifficulty,
   setStateCard,
+  getStarted,
 }) {
   DifficultyCard.propTypes = {
     setSelectedDifficulty: PropTypes.func.isRequired,
     selectedDifficulty: PropTypes.string.isRequired,
     setStateCard: PropTypes.func.isRequired,
+    getStarted: PropTypes.func.isRequired,
   };
 
   function DifficultyChoice(choice) {
     setSelectedDifficulty(choice);
+  }
+
+  function goStart() {
+    setStateCard("quiz");
+    getStarted();
   }
   console.warn(selectedDifficulty);
   return (
@@ -44,11 +51,7 @@ export default function DifficultyCard({
         </div>
       </div>
       <div className="starter">
-        <Button
-          styles="0"
-          linkUrl={() => setStateCard("quiz")}
-          name="Lancer la partie"
-        />
+        <Button styles="0" linkUrl={() => goStart()} name="Lancer la partie" />
       </div>
     </div>
   );

@@ -62,7 +62,9 @@ export default function Quiz() {
   };
   const getQuestion = async () => {
     try {
-      const response = await axios.get(url);
+      const response = await axios.get(
+        `${url}&difficulty=${selectedDifficulty}`
+      );
       const data = response.data.results[0];
 
       data.question = decodeString(data.question);
@@ -106,6 +108,15 @@ export default function Quiz() {
     setSeconds(30);
     getQuestion();
     setPaused(false);
+    if (selectedDifficulty === "hard") {
+      setLife(2);
+    } else if (selectedDifficulty === "medium") {
+      setLife(4);
+    } else if (selectedDifficulty === "easy") {
+      setLife(6);
+    } else {
+      setLife(2);
+    }
 
     /* ANSWERS SHUFFLE */
     function shuffleArray(responsesRandom) {
@@ -115,17 +126,16 @@ export default function Quiz() {
   }
   /* ANSWERS SYSTEM */
   function sendUserResponse(response) {
-    const difficulty = "hard";
     if (response === newQuestion.correct_answer && seconds > 0 && life > 0) {
       /* SCORE LOGIC 4 ANSWERS */
       if (responses.length === 4) {
         console.warn("Correct answer!");
         setPoints(points + 100);
         setMultiply(multiply + 1);
-        if (multiply >= 4 && difficulty === "hard") {
+        if (multiply >= 4 && selectedDifficulty === "hard") {
           setPoints(300 + points);
         }
-        if (multiply >= 4 && difficulty === "medium") {
+        if (multiply >= 4 && selectedDifficulty === "medium") {
           setPoints(200 + points);
         }
       }
@@ -134,10 +144,10 @@ export default function Quiz() {
         console.warn("Correct answer!");
         setPoints(points + 50);
         setMultiply(multiply + 1);
-        if (multiply >= 4 && difficulty === "hard") {
+        if (multiply >= 4 && selectedDifficulty === "hard") {
           setPoints(150 + points);
         }
-        if (multiply >= 4 && difficulty === "medium") {
+        if (multiply >= 4 && selectedDifficulty === "medium") {
           setPoints(100 + points);
         }
       }
@@ -205,6 +215,7 @@ export default function Quiz() {
               selectedDifficulty={selectedDifficulty}
               setSelectedDifficulty={setSelectedDifficulty}
               setStateCard={setStateCard}
+              getStarted={() => getStarted()}
             />
           )}
           {stateCard === "quiz" && (
@@ -216,10 +227,10 @@ export default function Quiz() {
                 category={newQuestion.category}
                 level=""
                 timeValue={currentCount}
+                multiplyValue={multiply}
+                selectedDifficulty={selectedDifficulty}
               />
-              <button type="button" onClick={getStarted}>
-                Get Question
-              </button>
+
               <div className="buttons-container">
                 {responses[0] !== ""
                   ? responses.map((response, index) => (

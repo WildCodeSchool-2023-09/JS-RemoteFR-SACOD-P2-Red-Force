@@ -9,6 +9,8 @@ export default function QuizCard({
   lifeValue,
   category,
   timeValue,
+  multiplyValue,
+  selectedDifficulty,
 }) {
   QuizCard.propTypes = {
     questionValue: PropTypes.string.isRequired,
@@ -16,6 +18,8 @@ export default function QuizCard({
     lifeValue: PropTypes.number.isRequired,
     category: PropTypes.string.isRequired,
     timeValue: PropTypes.string.isRequired,
+    multiplyValue: PropTypes.number.isRequired,
+    selectedDifficulty: PropTypes.string.isRequired,
   };
 
   let backgroundImage;
@@ -108,6 +112,14 @@ export default function QuizCard({
       backgroundImage = "none";
       break;
   }
+  let multiplicator;
+  if (selectedDifficulty === "medium" && multiplyValue >= 4) {
+    multiplicator = "(x2)";
+  } else if (selectedDifficulty === "hard" && multiplyValue >= 4) {
+    multiplicator = "(x3)";
+  } else {
+    multiplicator = "";
+  }
 
   return (
     <div className="quizcard-container">
@@ -120,7 +132,9 @@ export default function QuizCard({
         <div className="levelInfos">
           <Life lifeValue={lifeValue} />
           <p className="separator" />
-          <p className="score">{scoreValue} pts</p>
+          <p className="score">
+            {scoreValue} pts {multiplicator}
+          </p>
         </div>
       </div>
       <p className="timer">{timeValue}</p>
