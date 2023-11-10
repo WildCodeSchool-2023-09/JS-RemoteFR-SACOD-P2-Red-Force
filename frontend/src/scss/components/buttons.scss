@@ -1,0 +1,43 @@
+.buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.button {
+  padding: 0.5rem 1.4rem;
+  width: fit-content;
+  font-family: var(--font);
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.6rem;
+
+  &:hover {
+    transform: scale(0.95);
+  }
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+.easy {
+  background-color: var(--color-green);
+  color: var(--color-black);
+}
+.medium {
+  background-color: var(--color-orange);
+  color: var(--color-black);
+}
+.hard {
+  background-color: var(--color-red);
+  color: var(--color-black);
+}
+.default {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}

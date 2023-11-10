@@ -1,14 +1,27 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
 import App from "./App";
+import Quiz from "./pages/Quiz";
+import CategoryPage from "./pages/CategoryPage";
+import ScoreBoard from "./pages/ScoreBoard";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+  },
+  {
+    path: "/quiz",
+    element: <Quiz />,
+  },
+  {
+    path: "/category",
+    element: <CategoryPage />,
+  },
+  {
+    path: "/scoreboard",
+    element: <ScoreBoard />,
   },
 ]);
 

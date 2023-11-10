@@ -1,0 +1,50 @@
+h1 {
+  font-family: var(--font);
+  color: var(--color-white);
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.Icon {
+  border: 2px solid var(--color-white);
+  border-radius: 55px;
+  background-color: var(--color-white);
+  width: 80px;
+  height: 80px;
+  box-sizing: border-box;
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.Main {
+  display: flex;
+  padding-top: 70px;
+}
+
+.CategoryCard {
+  padding-bottom: 70px;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1200px;
+  gap: 15px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.Display {
+  border: 2px solid var(--color-white);
+  border-radius: 15px;
+  width: 260px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  background-color: var(--color-grey);
+  font-family: var(--font);
+  color: var(--color-white);
+}

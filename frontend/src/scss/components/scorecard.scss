@@ -1,0 +1,72 @@
+.scoreCard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1rem;
+  max-width: 800px;
+  height: auto;
+  padding: 1rem;
+  margin: 0 auto;
+
+  background-color: var(--color-light-grey);
+  border-radius: 0.8rem;
+  border: solid 2px var(--color-white);
+
+  font-family: var(--font);
+  color: var(--color-white);
+  text-align: center;
+
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+  }
+
+  .category {
+    font-weight: 500;
+    font-size: 1.2rem;
+  }
+
+  .section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    @media screen and (max-width: 700px) {
+      flex-direction: column;
+    }
+
+    .diffanddate {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      gap: 1rem;
+
+      .difficulty {
+        font-weight: 300;
+        font-size: 1rem;
+      }
+      .date {
+        font-weight: 300;
+        font-size: 1rem;
+      }
+    }
+
+    .score {
+      font-weight: 500;
+      font-size: 1.2rem;
+    }
+    .points-section {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      width: 45%;
+      height: 100%;
+    }
+  }
+}

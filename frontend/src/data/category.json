@@ -1,0 +1,112 @@
+[
+  {
+    "id": 27,
+    "name": "ANIMAUX",
+    "logo": "./assets/icons/animals.svg"
+  },
+  {
+    "id": 25,
+    "name": "ART",
+    "logo": "./assets/icons/art.svg"
+  },
+  {
+    "id": 16,
+    "name": "BORADGAMES",
+    "logo": "./assets/icons/boardgames.svg"
+  },
+  {
+    "id": 10,
+    "name": "LIVRE",
+    "logo": "./assets/icons/book.svg"
+  },
+  {
+    "id": 26,
+    "name": "CELEBRITES",
+    "logo": "./assets/icons/celebrities.svg"
+  },
+  {
+    "id": 18,
+    "name": "COMPUTER-SCIENCE",
+    "logo": "./assets/icons/computer-science.svg"
+  },
+  {
+    "id": 0,
+    "name": "DICE",
+    "logo": "./assets/icons/dice.svg"
+  },
+  {
+    "id": 11,
+    "name": "FILM",
+    "logo": "./assets/icons/film.svg"
+  },
+  {
+    "id": 9,
+    "name": "CULTURE-GENERALE",
+    "logo": "./assets/icons/general-knowledge.svg"
+  },
+  {
+    "id": 22,
+    "name": "GEOGRAPHIE",
+    "logo": "./assets/icons/geography.svg"
+  },
+  {
+    "id": 23,
+    "name": "HISTOIRE",
+    "logo": "./assets/icons/history.svg"
+  },
+  {
+    "id": 19,
+    "name": "SCIENCE ET MATHEMATIQUE",
+    "logo": "./assets/icons/maths.svg"
+  },
+  {
+    "id": 12,
+    "name": "MUSIQUE",
+    "logo": "./assets/icons/music.svg"
+  },
+  {
+    "id": 20,
+    "name": "MYTHOLOGY",
+    "logo": "./assets/icons/mythology.svg"
+  },
+  {
+    "id": 15,
+    "name": "NATURAL",
+    "logo": "./assets/icons/natural.svg"
+  },
+  {
+    "id": 24,
+    "name": "POLITIQUE",
+    "logo": "./assets/icons/politics.svg"
+  },
+  {
+    "id": 17,
+    "name": "SCIENCES ET NATURE",
+    "logo": "./assets/icons/science.svg"
+  },
+  {
+    "id": 21,
+    "name": "SPORTS",
+    "logo": "./assets/icons/sports.svg"
+  },
+  {
+    "id": 13,
+    "name": "MUSICAL ET THEATRE",
+    "logo": "./assets/icons/theatre.svg"
+  },
+  {
+    "id": 14,
+    "name": "TELEVISION",
+    "logo": "./assets/icons/tv.svg"
+  },
+  {
+    "id": 28,
+    "name": "VEHICULES",
+    "logo": "./assets/icons/vehicles.svg"
+  },
+  {
+    "id": 15,
+    "name": "JEUX VIDEO",
+    "logo": "./assets/icons/videogames.svg"
+  }
+]
