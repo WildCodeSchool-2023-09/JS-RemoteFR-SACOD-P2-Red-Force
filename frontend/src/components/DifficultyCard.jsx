@@ -6,14 +6,16 @@ import Button from "./buttons/Buttons";
 export default function DifficultyCard({
   setSelectedDifficulty,
   selectedDifficulty,
-  setStateCard,
   getStarted,
+  setStateCard,
+  setLife,
 }) {
   DifficultyCard.propTypes = {
     setSelectedDifficulty: PropTypes.func.isRequired,
     selectedDifficulty: PropTypes.string.isRequired,
     setStateCard: PropTypes.func.isRequired,
     getStarted: PropTypes.func.isRequired,
+    setLife: PropTypes.func.isRequired,
   };
 
   function DifficultyChoice(choice) {
@@ -22,9 +24,18 @@ export default function DifficultyCard({
 
   function goStart() {
     setStateCard("quiz");
+
+    if (selectedDifficulty === "hard") {
+      setLife(2);
+    } else if (selectedDifficulty === "medium") {
+      setLife(4);
+    } else if (selectedDifficulty === "easy") {
+      setLife(6);
+    } else {
+      setLife(6);
+    }
     getStarted();
   }
-  console.warn(selectedDifficulty);
   return (
     <div className="difficultycard-container">
       <div className="card-content">

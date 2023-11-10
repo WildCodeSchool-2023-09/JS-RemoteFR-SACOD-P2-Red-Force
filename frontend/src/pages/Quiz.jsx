@@ -22,7 +22,7 @@ const userScore = JSON.parse(localStorage.getItem("userScore")) || [];
 export default function Quiz() {
   const [url] = useOutletContext();
   const [newQuestion, setNewQuestion] = useState(initialQuestionData);
-  const [selectedDifficulty, setSelectedDifficulty] = useState();
+  const [selectedDifficulty, setSelectedDifficulty] = useState("easy");
   const [points, setPoints] = useState(0);
   const [life, setLife] = useState(3);
   const [multiply, setMultiply] = useState(1);
@@ -108,15 +108,6 @@ export default function Quiz() {
     setSeconds(30);
     getQuestion();
     setPaused(false);
-    if (selectedDifficulty === "hard") {
-      setLife(2);
-    } else if (selectedDifficulty === "medium") {
-      setLife(4);
-    } else if (selectedDifficulty === "easy") {
-      setLife(6);
-    } else {
-      setLife(2);
-    }
 
     /* ANSWERS SHUFFLE */
     function shuffleArray(responsesRandom) {
@@ -129,7 +120,6 @@ export default function Quiz() {
     if (response === newQuestion.correct_answer && seconds > 0 && life > 0) {
       /* SCORE LOGIC 4 ANSWERS */
       if (responses.length === 4) {
-        console.warn("Correct answer!");
         setPoints(points + 100);
         setMultiply(multiply + 1);
         if (multiply >= 4 && selectedDifficulty === "hard") {
@@ -141,7 +131,6 @@ export default function Quiz() {
       }
       /* SCORE LOGIC 2 ANWERS */
       if (responses.length === 2) {
-        console.warn("Correct answer!");
         setPoints(points + 50);
         setMultiply(multiply + 1);
         if (multiply >= 4 && selectedDifficulty === "hard") {
@@ -151,17 +140,14 @@ export default function Quiz() {
           setPoints(100 + points);
         }
       }
-      console.warn(multiply);
-      console.warn(`vie: ${currentLife}`);
       getStarted();
     } else {
       setLife(life - 1);
       currentLife = life - 1;
       setMultiply(0);
-      console.warn(`vie: ${currentLife}`);
       if (currentLife === 0) {
-        console.warn("Game over!");
         setPoints({ points });
+        setStateCard("error");
 
         userScore.push({
           score: points,
@@ -171,8 +157,6 @@ export default function Quiz() {
         });
         localStorage.setItem("userScore", JSON.stringify(userScore));
       } else {
-        console.warn("Try again!");
-        console.warn("Wrong answer!");
         getStarted();
       }
     }
@@ -216,6 +200,7 @@ export default function Quiz() {
               setSelectedDifficulty={setSelectedDifficulty}
               setStateCard={setStateCard}
               getStarted={() => getStarted()}
+              setLife={setLife}
             />
           )}
           {stateCard === "quiz" && (
