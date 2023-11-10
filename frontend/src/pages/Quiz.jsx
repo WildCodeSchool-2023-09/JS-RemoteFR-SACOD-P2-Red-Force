@@ -57,7 +57,6 @@ export default function Quiz() {
       return value;
     }
   };
-  console.warn(url);
   const getQuestion = async () => {
     try {
       const response = await axios.get(url);
