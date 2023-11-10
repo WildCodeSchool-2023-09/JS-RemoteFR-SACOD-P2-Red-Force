@@ -5,6 +5,7 @@ import * as React from "react";
 import he from "he";
 import QuizCard from "../components/QuizCard";
 import "../scss/root.scss";
+import DifficultyCard from "../components/DifficultyCard";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import ResponseBtn from "../components/buttons/ResponseBtn";
@@ -21,9 +22,11 @@ const userScore = JSON.parse(localStorage.getItem("userScore")) || [];
 export default function Quiz() {
   const [url] = useOutletContext();
   const [newQuestion, setNewQuestion] = useState(initialQuestionData);
+  const [selectedDifficulty, setSelectedDifficulty] = useState();
   const [points, setPoints] = useState(0);
   const [life, setLife] = useState(3);
   const [multiply, setMultiply] = useState(1);
+  const [stateCard, setStateCard] = useState("difficulty");
   let currentLife = life;
 
   const decodeString = (str) => {
@@ -197,30 +200,42 @@ export default function Quiz() {
           >
             <source src={bgvideo} type="video/mp4" />
           </video>
-          <QuizCard
-            questionValue={newQuestion.question}
-            lifeValue={currentLife}
-            scoreValue={points}
-            category={newQuestion.category}
-            level=""
-            timeValue={currentCount}
-          />
-          <button type="button" onClick={getStarted}>
-            Get Question
-          </button>
-          <div className="buttons-container">
-            {responses[0] !== ""
-              ? responses.map((response, index) => (
-                  <ResponseBtn
-                    key={response}
-                    responseValue={response}
-                    styles={index}
-                    type="button"
-                    onClick={() => sendUserResponse(response)}
-                  />
-                ))
-              : null}
-          </div>
+          {stateCard === "difficulty" && (
+            <DifficultyCard
+              selectedDifficulty={selectedDifficulty}
+              setSelectedDifficulty={setSelectedDifficulty}
+              setStateCard={setStateCard}
+            />
+          )}
+          {stateCard === "quiz" && (
+            <div>
+              <QuizCard
+                questionValue={newQuestion.question}
+                lifeValue={currentLife}
+                scoreValue={points}
+                category={newQuestion.category}
+                level=""
+                timeValue={currentCount}
+              />
+              <button type="button" onClick={getStarted}>
+                Get Question
+              </button>
+              <div className="buttons-container">
+                {responses[0] !== ""
+                  ? responses.map((response, index) => (
+                      <ResponseBtn
+                        key={response}
+                        responseValue={response}
+                        styles={index}
+                        type="button"
+                        onClick={() => sendUserResponse(response)}
+                      />
+                    ))
+                  : null}
+              </div>
+            </div>
+          )}
+          {stateCard === "error" && <p>Error</p>}
         </div>
       </main>
       <Footer />

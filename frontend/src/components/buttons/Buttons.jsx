@@ -2,8 +2,8 @@ import React from "react";
 import "../../scss/components/buttons.scss";
 import PropTypes from "prop-types";
 
-function Difficulty({ name, styles, linkUrl }) {
-  Difficulty.propTypes = {
+function Buttons({ name, styles, linkUrl }) {
+  Buttons.propTypes = {
     name: PropTypes.string.isRequired,
     styles: PropTypes.string.isRequired,
     linkUrl: PropTypes.func.isRequired,
@@ -29,4 +29,4 @@ function Difficulty({ name, styles, linkUrl }) {
   );
 }
 
-export default Difficulty;
+export default Buttons;
