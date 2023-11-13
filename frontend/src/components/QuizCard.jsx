@@ -109,7 +109,7 @@ export default function QuizCard({
       break;
 
     default:
-      backgroundImage = "none";
+      backgroundImage = "url(./assets/icons/dice.svg)";
       break;
   }
   let multiplicator;
