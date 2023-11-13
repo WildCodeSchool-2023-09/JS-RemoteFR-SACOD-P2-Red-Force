@@ -153,11 +153,16 @@ export default function Quiz() {
       if (currentLife === 0) {
         setPoints({ points });
         setStateCard("error");
-
+        let categoryofgame;
+        if (url.includes("category=0")) {
+          categoryofgame = "Random";
+        } else {
+          categoryofgame = newQuestion.category;
+        }
         userScore.push({
           score: points,
           difficulty: newQuestion.difficulty,
-          category: newQuestion.category,
+          category: categoryofgame,
           date: Date.now(),
         });
         localStorage.setItem("userScore", JSON.stringify(userScore));
