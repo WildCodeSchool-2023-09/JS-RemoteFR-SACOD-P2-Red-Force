@@ -11,17 +11,17 @@
   },
   {
     "id": 16,
-    "name": "BORADGAMES",
+    "name": "JEUX DE PLATEAUX",
     "logo": "./assets/icons/boardgames.svg"
   },
   {
     "id": 10,
-    "name": "LIVRE",
+    "name": "LITTÉRATURE",
     "logo": "./assets/icons/book.svg"
   },
   {
     "id": 26,
-    "name": "CELEBRITES",
+    "name": "CÉLÉBRITÉS",
     "logo": "./assets/icons/celebrities.svg"
   },
   {
@@ -31,12 +31,12 @@
   },
   {
     "id": 0,
-    "name": "DICE",
+    "name": "ALÉATOIRE",
     "logo": "./assets/icons/dice.svg"
   },
   {
     "id": 11,
-    "name": "FILM",
+    "name": "CINÉMA",
     "logo": "./assets/icons/film.svg"
   },
   {
@@ -46,7 +46,7 @@
   },
   {
     "id": 22,
-    "name": "GEOGRAPHIE",
+    "name": "GÉOGRAPHIE",
     "logo": "./assets/icons/geography.svg"
   },
   {
@@ -56,7 +56,7 @@
   },
   {
     "id": 19,
-    "name": "SCIENCE ET MATHEMATIQUE",
+    "name": "SCIENCES ET MATHÉMATIQUES",
     "logo": "./assets/icons/maths.svg"
   },
   {
@@ -66,7 +66,7 @@
   },
   {
     "id": 20,
-    "name": "MYTHOLOGY",
+    "name": "MYTHOLOGIE",
     "logo": "./assets/icons/mythology.svg"
   },
   {
@@ -91,22 +91,22 @@
   },
   {
     "id": 13,
-    "name": "MUSICAL ET THEATRE",
+    "name": "MUSICAL ET THÉATRE",
     "logo": "./assets/icons/theatre.svg"
   },
   {
     "id": 14,
-    "name": "TELEVISION",
+    "name": "TÉLÉVISION",
     "logo": "./assets/icons/tv.svg"
   },
   {
     "id": 28,
-    "name": "VEHICULES",
+    "name": "VÉHICULES",
     "logo": "./assets/icons/vehicles.svg"
   },
   {
     "id": 15,
-    "name": "JEUX VIDEO",
+    "name": "JEUX-VIDEO",
     "logo": "./assets/icons/videogames.svg"
   }
 ]

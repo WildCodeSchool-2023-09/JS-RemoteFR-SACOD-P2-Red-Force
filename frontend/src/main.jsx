@@ -5,23 +5,30 @@ import App from "./App";
 import Quiz from "./pages/Quiz";
 import CategoryPage from "./pages/CategoryPage";
 import ScoreBoard from "./pages/ScoreBoard";
+import Home from "./pages/Home";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-  },
-  {
-    path: "/quiz",
-    element: <Quiz />,
-  },
-  {
-    path: "/category",
-    element: <CategoryPage />,
-  },
-  {
-    path: "/scoreboard",
-    element: <ScoreBoard />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/quiz",
+        element: <Quiz />,
+      },
+      {
+        path: "/category",
+        element: <CategoryPage />,
+      },
+      {
+        path: "/scoreboard",
+        element: <ScoreBoard />,
+      },
+    ],
   },
 ]);
 
