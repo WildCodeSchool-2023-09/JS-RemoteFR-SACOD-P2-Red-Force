@@ -11,6 +11,11 @@ nav {
   font-family: var(--font);
   z-index: 99;
 
+  .logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
   .trivality {
     height: 80%;
   }
