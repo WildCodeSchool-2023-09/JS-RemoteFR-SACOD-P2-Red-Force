@@ -6,11 +6,13 @@ import Quiz from "./pages/Quiz";
 import CategoryPage from "./pages/CategoryPage";
 import ScoreBoard from "./pages/ScoreBoard";
 import Home from "./pages/Home";
+import PageError from "./pages/PageError";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <PageError />,
     children: [
       {
         path: "/",
