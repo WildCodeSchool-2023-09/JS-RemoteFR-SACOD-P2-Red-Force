@@ -10,6 +10,16 @@
 
 ### 💡 Concept Design :
 
+DESKTOP VIEW
+![Web Proto](https://github.com/WildCodeSchool-2023-09/JS-RemoteFR-SACOD-P2-Red-Force/assets/138216585/6bc46efb-93e1-4378-9fe1-604dd2dba4e5)
+![Web Proto (1)](https://github.com/WildCodeSchool-2023-09/JS-RemoteFR-SACOD-P2-Red-Force/assets/138216585/c2772763-d96b-420a-914d-786c70f2f303)
+![Web Proto (2)](https://github.com/WildCodeSchool-2023-09/JS-RemoteFR-SACOD-P2-Red-Force/assets/138216585/c88888a6-6572-4be5-843d-29fee294a8d8)
+
+MOBILE VIEW : 
+![Web Proto (3)](https://github.com/WildCodeSchool-2023-09/JS-RemoteFR-SACOD-P2-Red-Force/assets/138216585/a8e77a56-734e-46da-94a8-4906b731e55d)
+![Web Proto (4)](https://github.com/WildCodeSchool-2023-09/JS-RemoteFR-SACOD-P2-Red-Force/assets/138216585/ff982ba1-e2f7-4baf-8f24-8633c694d7e8)
+![Web Proto (5)](https://github.com/WildCodeSchool-2023-09/JS-RemoteFR-SACOD-P2-Red-Force/assets/138216585/ecc10194-5891-4e12-a6b5-a306aa577b82)
+
 <br>
 <br>
  
