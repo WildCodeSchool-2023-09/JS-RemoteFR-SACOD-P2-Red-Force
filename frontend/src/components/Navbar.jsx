@@ -15,18 +15,24 @@ export default function Navbar({ setUrl }) {
   const handleOpen = () => {
     setOpen(!open);
   };
+
   const [openCat, setOpenCat] = useState(false);
   const handleOpenCat = () => {
     setOpenCat(!openCat);
   };
 
   function handleBtnClick() {
-    setUrl(`https://opentdb.com/api.php?amount=1&category=0`);
+    setOpen(!open);
+    if (setUrl !== undefined) {
+      setUrl("https://opentdb.com/api.php?amount=1&category=0");
+    }
   }
 
   return (
     <nav>
-      <img className="trivality" src={trivalitylogo} alt="" />
+      <Link className="logo" to="/">
+        <img className="trivality" src={trivalitylogo} alt="" />
+      </Link>
       <div className="navbar">
         <ul className={`nav ${open ? "nav-open" : "hide-nav"}`}>
           {navdata.map((index) =>
