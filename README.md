@@ -5,6 +5,10 @@
 
 ### 📄 About :
 
+Triviality games is a prototype web site using data from the api TriviaDB in order to challenge yourself and your knowledge through a game inspired by the famous Trivial Pursuit. The web site and game are currently in french. 
+You can chose between 2 game mode; by choosing a specific category or by playing a random game which will mix questions from all of the available categories. 
+You can go through 3 different difficulties; easy, medium, hard; each one of them with its own score system, score that you'll be able to keep in your browser. 
+
 <br>
 <br>
 
