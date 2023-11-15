@@ -12,7 +12,6 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <PageError />,
     children: [
       {
         path: "/",
@@ -29,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/scoreboard",
         element: <ScoreBoard />,
+      },
+      {
+        path: "*",
+        element: <PageError />,
       },
     ],
   },
