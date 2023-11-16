@@ -7,7 +7,7 @@
   {
     "id": 2,
     "linkname": "Mode de jeu",
-    "linkurl": "/",
+    "linkurl": null,
     "dropdown": [
       {
         "id": 2.01,

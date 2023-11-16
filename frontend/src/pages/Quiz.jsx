@@ -1,11 +1,14 @@
+import { useOutletContext, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import * as React from "react";
 import he from "he";
 import QuizCard from "../components/QuizCard";
 import "../scss/root.scss";
+import DifficultyCard from "../components/DifficultyCard";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import Button from "../components/buttons/Buttons";
 import ResponseBtn from "../components/buttons/ResponseBtn";
 import bgvideo from "../assets/mp4/home-background.mp4";
 
@@ -18,10 +21,21 @@ const initialQuestionData = {
 const userScore = JSON.parse(localStorage.getItem("userScore")) || [];
 
 export default function Quiz() {
+  const [url] = useOutletContext();
   const [newQuestion, setNewQuestion] = useState(initialQuestionData);
+  const [selectedDifficulty, setSelectedDifficulty] = useState("easy");
   const [points, setPoints] = useState(0);
   const [life, setLife] = useState(3);
   const [multiply, setMultiply] = useState(1);
+  const [stateCard, setStateCard] = useState("difficulty");
+  const [responses, setResponses] = useState([]);
+  const navigate = useNavigate();
+
+  /* TIMER LOGIC */
+
+  const [seconds, setSeconds] = useState(30);
+  const [paused, setPaused] = useState(true);
+  const currentCount = seconds < 10 ? `00:0${seconds}` : `00: ${seconds}`;
   let currentLife = life;
 
   const decodeString = (str) => {
@@ -30,12 +44,12 @@ export default function Quiz() {
 
   const translateFR = async (value) => {
     const API_KEY = import.meta.env.VITE_TRANSLATION_KEY_GOOGLEAPI;
-    let url = `https://translation.googleapis.com/language/translate/v2?key=${API_KEY}`;
-    url += `&q=${encodeURI(value)}`;
-    url += `&source=en`;
-    url += `&target=fr`;
+    let urlTranslate = `https://translation.googleapis.com/language/translate/v2?key=${API_KEY}`;
+    urlTranslate += `&q=${encodeURI(value)}`;
+    urlTranslate += `&source=en`;
+    urlTranslate += `&target=fr`;
     try {
-      const response = await fetch(url, {
+      const response = await fetch(urlTranslate, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -55,10 +69,11 @@ export default function Quiz() {
       return value;
     }
   };
-
   const getQuestion = async () => {
     try {
-      const response = await axios.get("https://opentdb.com/api.php?amount=1");
+      const response = await axios.get(
+        `${url}&difficulty=${selectedDifficulty}`
+      );
       const data = response.data.results[0];
 
       data.question = decodeString(data.question);
@@ -85,80 +100,73 @@ export default function Quiz() {
     }
   };
 
-  /* REPONSES CORRECT ET INCORRECT */
-  let responses = newQuestion.incorrect_answers.concat(
-    newQuestion.correct_answer
-  );
+  function shuffleArray(responsesRandom) {
+    return responsesRandom.sort(() => Math.random() - 0.5);
+  }
 
-  /* TIMER LOGIC */
-
-  const [seconds, setSeconds] = useState(30);
-  const [paused, setPaused] = useState(true);
-
-  const currentCount = seconds < 10 ? `00:0${seconds}` : `00: ${seconds}`;
-
-  /* QUESTION LAUNCH */
   function getStarted() {
     setSeconds(30);
     getQuestion();
     setPaused(false);
-
-    /* ANSWERS SHUFFLE */
-    function shuffleArray(responsesRandom) {
-      return responsesRandom.sort(() => Math.random() - 0.5);
-    }
-    responses = shuffleArray(responses);
   }
+
+  useEffect(() => {
+    if (newQuestion.incorrect_answers && newQuestion.correct_answer) {
+      const shuffledResponses = shuffleArray([
+        ...newQuestion.incorrect_answers,
+        newQuestion.correct_answer,
+      ]);
+      setResponses(shuffledResponses);
+    }
+  }, [newQuestion]);
+
   /* ANSWERS SYSTEM */
   function sendUserResponse(response) {
-    const difficulty = "hard";
     if (response === newQuestion.correct_answer && seconds > 0 && life > 0) {
       /* SCORE LOGIC 4 ANSWERS */
       if (responses.length === 4) {
-        console.warn("Correct answer!");
         setPoints(points + 100);
         setMultiply(multiply + 1);
-        if (multiply >= 4 && difficulty === "hard") {
+        if (multiply >= 4 && selectedDifficulty === "hard") {
           setPoints(300 + points);
         }
-        if (multiply >= 4 && difficulty === "medium") {
+        if (multiply >= 4 && selectedDifficulty === "medium") {
           setPoints(200 + points);
         }
       }
       /* SCORE LOGIC 2 ANWERS */
       if (responses.length === 2) {
-        console.warn("Correct answer!");
         setPoints(points + 50);
         setMultiply(multiply + 1);
-        if (multiply >= 4 && difficulty === "hard") {
+        if (multiply >= 4 && selectedDifficulty === "hard") {
           setPoints(150 + points);
         }
-        if (multiply >= 4 && difficulty === "medium") {
+        if (multiply >= 4 && selectedDifficulty === "medium") {
           setPoints(100 + points);
         }
       }
-      console.warn(multiply);
-      console.warn(`vie: ${currentLife}`);
       getStarted();
     } else {
       setLife(life - 1);
       currentLife = life - 1;
       setMultiply(0);
-      console.warn(`vie: ${currentLife}`);
       if (currentLife === 0) {
-        console.warn("Game over!");
         setPoints({ points });
-
+        setStateCard("error");
+        let categoryofgame;
+        if (url.includes("category=0")) {
+          categoryofgame = "Random";
+        } else {
+          categoryofgame = newQuestion.category;
+        }
         userScore.push({
           score: points,
           difficulty: newQuestion.difficulty,
-          category: newQuestion.category,
+          category: categoryofgame,
           date: Date.now(),
         });
         localStorage.setItem("userScore", JSON.stringify(userScore));
       } else {
-        console.warn("Try again!");
-        console.warn("Wrong answer!");
         getStarted();
       }
     }
@@ -188,38 +196,61 @@ export default function Quiz() {
         <div className="home-main">
           <video
             className="background-video"
-            autoPlay="true"
-            loop="true"
+            autoPlay
+            loop
             controls={false}
-            playsInline="true"
-            muted="true"
+            playsInline
+            muted
           >
             <source src={bgvideo} type="video/mp4" />
           </video>
-          <QuizCard
-            questionValue={newQuestion.question}
-            lifeValue={currentLife}
-            scoreValue={points}
-            category={newQuestion.category}
-            level=""
-            timeValue={currentCount}
-          />
-          <button type="button" onClick={getStarted}>
-            Get Question
-          </button>
-          <div className="buttons-container">
-            {responses[0] !== ""
-              ? responses.map((response, index) => (
-                  <ResponseBtn
-                    key={response}
-                    responseValue={response}
-                    styles={index}
-                    type="button"
-                    onClick={() => sendUserResponse(response)}
-                  />
-                ))
-              : null}
-          </div>
+          {stateCard === "difficulty" && (
+            <DifficultyCard
+              selectedDifficulty={selectedDifficulty}
+              setSelectedDifficulty={setSelectedDifficulty}
+              setStateCard={setStateCard}
+              getStarted={() => getStarted()}
+              setLife={setLife}
+            />
+          )}
+          {stateCard === "quiz" && (
+            <div>
+              <QuizCard
+                questionValue={newQuestion.question}
+                lifeValue={currentLife}
+                scoreValue={points}
+                category={newQuestion.category}
+                level=""
+                timeValue={currentCount}
+                multiplyValue={multiply}
+                selectedDifficulty={selectedDifficulty}
+              />
+
+              <div className="buttons-container">
+                {responses[0] !== ""
+                  ? responses.map((response, index) => (
+                      <ResponseBtn
+                        key={response}
+                        responseValue={response}
+                        styles={index}
+                        type="button"
+                        onClick={() => sendUserResponse(response)}
+                      />
+                    ))
+                  : null}
+              </div>
+            </div>
+          )}
+          {stateCard === "error" && (
+            <div className="gameover">
+              <h1>Partie Terminée</h1>
+              <Button
+                styles="0"
+                linkUrl={() => navigate("/scoreboard")}
+                name="Voir le Scoreboard"
+              />
+            </div>
+          )}
         </div>
       </main>
       <Footer />
